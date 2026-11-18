@@ -34,11 +34,11 @@
 /* Mobile : logo au centre, boutons, bandeau de trois photos, horaires */
 .hero__kicker,.sub--m,.hero__more{display:none}
 @media (max-width:899px){
-  .hero{display:flex;flex-direction:column;justify-content:center;min-height:100svh;padding-top:calc(96px + env(safe-area-inset-top))!important;padding-bottom:20px!important}
+  .hero{display:flex;flex-direction:column;justify-content:center;min-height:100svh;background:var(--sable);padding-top:calc(96px + env(safe-area-inset-top))!important;padding-bottom:20px!important}
   .hero>*{margin-inline:0;max-width:none;width:100%}
-  .hero__kicker{display:block;color:var(--brun)}
+  .hero__kicker{display:block;color:var(--lettre-f)}
   .shutters{display:none}
-  .sign{max-width:none;margin:16px 0 0;padding:0;background:none;box-shadow:none;border-radius:0;color:var(--creme)}
+  .sign{max-width:none;margin:16px 0 0;padding:0;background:none;box-shadow:none;border-radius:0;color:var(--lettre)}
   .hero__title{margin:0}
   .hero__title>[aria-hidden]{display:none}
   .sub--d{display:none}
@@ -50,7 +50,7 @@
   .hero__photo img{width:100%;height:100%;object-fit:cover}
   .hero__photo picture img{object-position:62% 66%}
   .hero__more{margin-top:26px}
-  .hero__more+.hero__more{margin-top:-10px;height:calc(100% - 26px)}
+  .hero__more+.hero__more{margin-top:-10px;height:calc(100% - 26px);object-position:30% 50%}
   .hero__hours{order:5;margin-top:4px}
   .hero__photo~.hero__cta,.hero__actions{margin-bottom:0}
   body:has(.hero) .top:not(.solid) .top__brand{opacity:0;pointer-events:none}
