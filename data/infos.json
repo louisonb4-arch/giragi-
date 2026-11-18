@@ -1,0 +1,47 @@
+{
+  "_doc": "Infos pratiques de Giragi. Les champs marqués aConfirmer:true sont repris d'Instagram/Google et doivent être validés par le gérant.",
+  "nom": "Giragi",
+  "baseline": "Bistrot & cave à manger de quartier",
+  "adresse": {
+    "rue": "1 place Saint-Clair",
+    "cp": "44100",
+    "ville": "Nantes",
+    "quartier": "Zola · Saint-Clair",
+    "repere": "Face à l'église Saint-Clair",
+    "lat": 47.2124244,
+    "lng": -1.5834447,
+    "itineraire": "https://www.google.com/maps/dir/?api=1&destination=GIRAGI%20Bistrot%20et%20Cave%20%C3%A0%20manger%2C%201%20Place%20Saint-Clair%2C%2044100%20Nantes"
+  },
+  "telephone": { "affiche": "09 88 04 44 66", "lien": "+33988044466" },
+  "email": { "adresse": "bonjour@giragi.com", "aConfirmer": true },
+  "reservation": {
+    "url": "https://urls.fr/F3OqMJ",
+    "libelle": "Réserver en ligne",
+    "_note": "Lien de la bio Instagram (Réserver avec Google / DuJour.pro). Remplacer par le lien DuJour direct du restaurant dès qu'on l'a."
+  },
+  "instagram": { "pseudo": "@giragi.nantes", "url": "https://www.instagram.com/giragi.nantes/" },
+  "google": { "note": "4,8", "avis": 89, "date": "18/11/2026", "url": "https://www.google.com/maps/place/GIRAGI+-+Bistrot+et+Cave+%C3%A0+manger/@47.2124244,-1.5834447,17z/data=!4m8!3m7!1s0x4805eddb665a0e53:0x526e5d3d6629af77!8m2!3d47.2124244!4d-1.5834447!9m1!1b1" },
+  "horaires": {
+    "_source": "Bio Instagram au 18/11/2026. Google Maps affiche autre chose (mar. 12h–18h, mer.–ven. 12h–23h en continu) : à trancher avec le gérant.",
+    "aConfirmer": true,
+    "jours": [
+      { "jour": "Lundi", "code": "Mo", "creneaux": [] },
+      { "jour": "Mardi", "code": "Tu", "creneaux": [["12:00", "14:00"]] },
+      { "jour": "Mercredi", "code": "We", "creneaux": [["12:00", "14:00"], ["18:00", "23:00"]] },
+      { "jour": "Jeudi", "code": "Th", "creneaux": [["12:00", "14:00"], ["18:00", "23:00"]] },
+      { "jour": "Vendredi", "code": "Fr", "creneaux": [["12:00", "14:00"], ["18:00", "23:00"]] },
+      { "jour": "Samedi", "code": "Sa", "creneaux": [["18:00", "23:00"]] },
+      { "jour": "Dimanche", "code": "Su", "creneaux": [] }
+    ]
+  },
+  "paiement": { "titresRestaurant": true, "aConfirmer": true, "_source": "Post Instagram du 20/01/2026" },
+  "groupes": {
+    "aConfirmer": true,
+    "_source": "Post épinglé Instagram « Privat' & groupes »",
+    "capacite": "de 10 à 40 personnes",
+    "jours": "du mercredi au samedi",
+    "prixDes": "35 €",
+    "detail": "food & drink"
+  },
+  "credits": { "photos": "@pewdr", "enseigne": "@monsieurlaw" }
+}

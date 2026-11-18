@@ -1,0 +1,11 @@
+{
+  "_doc": "Extraits exacts d'avis Google publics (relevés le 18/11/2026). Ne jamais reformuler un avis : copier le texte tel quel.",
+  "avis": [
+    { "texte": "Pleine de saveurs, d'aromates et de bonnes huiles parfumées et relevées.", "auteur": "Anastasia", "date": "avril 2026" },
+    { "texte": "…enfin un resto de quartier qui sait faire des plats végétariens.", "auteur": "Guillaume N.", "date": "mars 2026" },
+    { "texte": "Situé en face de l'église St.Clair, on se croirait dans un village.", "auteur": "Mykola T.", "date": "juillet 2025" },
+    { "texte": "Les plats sont magnifiquement assaisonnés et tout était délicieux.", "auteur": "Lou P.", "date": "novembre 2026" },
+    { "texte": "Superbe sélection de vins.", "auteur": "Moïra L.", "date": "juin 2025" },
+    { "texte": "Des assiettes toutes en saveur, épices et herbes aromatiques…", "auteur": "Sophie S.", "date": "avril 2026" }
+  ]
+}

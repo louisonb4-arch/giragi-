@@ -1,0 +1,129 @@
+{
+  "_doc": "L'ardoise de Giragi. C'est le seul fichier à modifier chaque semaine : changer les plats, puis `npm run build` (ou pousser sur GitHub, Vercel reconstruit). prix: null = pas affiché. vg: true = pastille végétarien.",
+  "miseAJour": "2026-11-18",
+  "midi": {
+    "titre": "L'ardoise du midi",
+    "jours": "Du mardi au vendredi",
+    "intro": "Une carte courte et de saison : deux entrées, deux plats, deux desserts, qui changent avec le marché.",
+    "formules": [
+      {
+        "nom": "Formule déjeuner",
+        "detail": "Entrée + plat ou plat + dessert",
+        "prix": "19,50 €",
+        "aConfirmer": true
+      },
+      {
+        "nom": "Plat du jour",
+        "detail": "",
+        "prix": "15,50 €",
+        "aConfirmer": true
+      },
+      {
+        "nom": "Entrées & desserts",
+        "detail": "à l'unité",
+        "prix": "5 €",
+        "aConfirmer": true
+      }
+    ],
+    "_sourceFormules": "Post Instagram « Midi moins cher » du 20/01/2026",
+    "exemple": "Exemple d'ardoise : la Grande Semaine Végétale (septembre 2026), 100 % végétarienne",
+    "plats": [
+      {
+        "categorie": "",
+        "nom": "Schnitzel de céleri-rave",
+        "detail": "jus végétal, rémoulade, courge spaghetti",
+        "vg": true,
+        "prix": null
+      },
+      {
+        "categorie": "",
+        "nom": "Vol-au-vent, aubergine fumée",
+        "detail": "beurre blanc harissa, tombée de brèdes, cacahuètes",
+        "vg": true,
+        "prix": null
+      },
+      {
+        "categorie": "",
+        "nom": "Petit farci d'oignon",
+        "detail": "freekeh aux herbes, bouillon céréalier, crème de feta",
+        "vg": true,
+        "prix": null
+      },
+      {
+        "categorie": "",
+        "nom": "Steak de tomate à la flamme",
+        "detail": "condiment olive noire, chutney fumé",
+        "vg": true,
+        "prix": null
+      },
+      {
+        "categorie": "",
+        "nom": "Brioche perdue",
+        "detail": "glace maïs, crème épi, pop-corn",
+        "vg": true,
+        "prix": null
+      }
+    ]
+  },
+  "soir": {
+    "titre": "Les assiettes du soir",
+    "jours": "Du mercredi au samedi",
+    "intro": "Des assiettes à partager, à la bonne franquette, avec une quille ou une bière du coin.",
+    "signature": {
+      "nom": "Pain-huile d'olive",
+      "detail": "pain maison longuement fermenté, servi tous les soirs"
+    },
+    "exemple": "Exemple d'ardoise : fin d'été 2026",
+    "plats": [
+      {
+        "nom": "Houmous",
+        "detail": "huile Tabasco, huile basilic, pita",
+        "vg": false,
+        "prix": null
+      },
+      {
+        "nom": "Pan con tomate",
+        "detail": "ail confit, douce anchoïade, câpres croustillantes",
+        "vg": false,
+        "prix": null
+      },
+      {
+        "nom": "Poivrons à la flamme",
+        "detail": "sauce tahini black & white, chutney poivron, sésame croustillant",
+        "vg": false,
+        "prix": null
+      },
+      {
+        "nom": "Pâtissons d'été au barbecue",
+        "detail": "agrodolce tournesol-raisins, beurre blanc verjus",
+        "vg": false,
+        "prix": null
+      },
+      {
+        "nom": "Aubergine confite",
+        "detail": "agrodolce tournesol-raisins, labneh fumé, salsa",
+        "vg": false,
+        "prix": null
+      },
+      {
+        "nom": "Poivrons longs",
+        "detail": "ktipiti, tapenade, granola olives noires",
+        "vg": false,
+        "prix": null
+      },
+      {
+        "nom": "Dorade grise à la flamme",
+        "detail": "coulis tomate, ezme",
+        "vg": false,
+        "prix": null
+      },
+      {
+        "nom": "Coupe Pompon",
+        "detail": "prune rouge, olive noire",
+        "vg": false,
+        "prix": null,
+        "dessert": true
+      }
+    ]
+  }
+}

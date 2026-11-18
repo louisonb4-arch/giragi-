@@ -1,0 +1,13 @@
+.cave__grid{display:grid;gap:30px}
+.cave__photo{border-radius:var(--r);overflow:hidden}
+.cave__photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.cave__text{display:grid;gap:16px;align-content:center;max-width:48ch}
+.cave__text .h2{margin-top:0}
+.cave__list{display:grid;margin-top:6px;border-top:1px solid var(--line)}
+.cave__list li{display:grid;grid-template-columns:7.2em 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.cave__list b{font-family:var(--f-display);font-weight:400;font-size:1.2rem;color:var(--accent)}
+.cave__list span{font-style:italic}
+.cave__aside{color:var(--muted)}
+@media (min-width:900px){
+  .cave__grid{grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+}

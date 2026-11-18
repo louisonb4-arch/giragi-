@@ -1,0 +1,43 @@
+/* Polices auto-hébergées (aucun appel à Google Fonts) */
+@font-face{font-family:"EB Garamond";src:url(/fonts/eb-garamond-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url(/fonts/eb-garamond-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url(/fonts/eb-garamond-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url(/fonts/eb-garamond-latin-500-italic.woff2) format("woff2");font-weight:500;font-style:italic;font-display:swap}
+@font-face{font-family:"Shrikhand";src:url(/fonts/shrikhand-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(/fonts/instrument-sans-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(/fonts/instrument-sans-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
+
+:root{
+  /* Palette relevée sur le logo, la façade et les tabliers */
+  --creme:#DED9C3;      /* fond du logo, mur de la façade */
+  --papier:#ECE8DA;     /* cartes claires */
+  --brun:#833B00;       /* logo, aplats Instagram */
+  --brun-nuit:#5C2900;  /* ardoise du soir */
+  --brun-peint:#966655; /* lettrage peint, grands textes uniquement */
+  --bleu:#3B229A;       /* tablier de l'équipe : CTA */
+  --bleu-d:#2B1877;
+  --encre:#1B1210;
+
+  --f-serif:"EB Garamond",Garamond,"Times New Roman",serif;
+  --f-display:"Shrikhand",var(--f-serif);
+  --f-ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+  --pad:clamp(20px,5.6vw,56px);
+  --max:1240px;
+  --r:14px;
+  --ease:cubic-bezier(.22,1,.36,1);
+
+  /* Ton courant (jour par défaut, bascule en soirée au scroll) */
+  --bg:var(--creme);
+  --fg:var(--encre);
+  --accent:var(--brun);
+  --muted:#5A4A3E;
+  --line:rgba(27,18,16,.16);
+}
+body.is-night{
+  --bg:var(--brun);
+  --fg:var(--creme);
+  --accent:#F1E2C4;
+  --muted:#EBD9C2;
+  --line:rgba(222,217,195,.3);
+}

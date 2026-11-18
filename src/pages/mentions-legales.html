@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+{{> head}}
+<title>Mentions légales · Giragi, bistrot et cave à manger, Nantes</title>
+<meta name="description" content="Mentions légales et données personnelles du site de Giragi, bistrot et cave à manger de quartier, 1 place Saint-Clair à Nantes.">
+<link rel="canonical" href="{{ site.url }}/mentions-legales">
+</head>
+<body>
+<header class="solid-top"><a href="/" aria-label="Giragi, accueil"><span class="logo-mask" aria-hidden="true"></span></a><a href="/">← Retour au site</a></header>
+<main class="page">
+  <h1>Mentions légales</h1>
+  <p class="updated">Dernière mise à jour : 18 novembre 2026</p>
+
+  <h2>Éditeur du site</h2>
+  <p>GIRAGI, société par actions simplifiée (SAS) au capital de 12 500 €, exploitant le restaurant Giragi.<br>
+  Siège social et établissement : {{ infos.adresse.rue }}, {{ infos.adresse.cp }} {{ infos.adresse.ville }}.<br>
+  SIREN 943 241 075 · SIRET 943 241 075 00010 · RCS Nantes · TVA intracommunautaire FR49 943 241 075.<br>
+  Directrice de la publication : Tessy Baddy, présidente.<br>
+  Téléphone : <a href="tel:{{ infos.telephone.lien }}">{{ infos.telephone.affiche }}</a> · E-mail : <a href="mailto:{{ infos.email.adresse }}">{{ infos.email.adresse }}</a></p>
+
+  <h2>Hébergement</h2>
+  <p>Vercel Inc., 440 N Barranca Avenue #4133, Covina, CA 91723, États-Unis · <a href="https://vercel.com" rel="noopener">vercel.com</a></p>
+
+  <h2>Conception</h2>
+  <p>Site conçu et réalisé par <a href="https://vokumagency.com" rel="noopener">Vokum</a>.</p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>Le nom et le logo Giragi, les textes et les photographies de ce site appartiennent à Giragi et à leurs auteurs. Photographies : {{ infos.credits.photos }}. Enseigne peinte : {{ infos.credits.enseigne }}. Toute reproduction sans autorisation écrite est interdite.</p>
+  <p>Plan du quartier : données © contributeurs OpenStreetMap (licence ODbL). Polices EB Garamond, Shrikhand et Instrument Sans : licence SIL Open Font License.</p>
+
+  <h2>Données personnelles et cookies</h2>
+  <p>Ce site ne comporte aucun formulaire, ne dépose aucun cookie et n'utilise aucun outil de mesure d'audience ni de publicité. Les polices et les images sont hébergées avec le site : aucun service tiers n'est appelé pendant la visite. Le navigateur garde seulement, le temps de la visite, l'information que l'animation d'ouverture a déjà été vue.</p>
+  <p>Comme tout hébergeur, Vercel enregistre des journaux techniques (adresse IP, date, page demandée) pour la sécurité et le bon fonctionnement du service.</p>
+  <p>Les boutons « Réserver » ouvrent le service de réservation en ligne (Réserver avec Google, en partenariat avec DuJour), les liens « Itinéraire » et « avis » ouvrent Google Maps, et les liens Instagram ouvrent Instagram. Ces services appliquent leur propre politique de confidentialité.</p>
+  <p>Pour toute question sur vos données : <a href="mailto:{{ infos.email.adresse }}">{{ infos.email.adresse }}</a>. Vous pouvez aussi adresser une réclamation à la <a href="https://www.cnil.fr" rel="noopener">CNIL</a>.</p>
+
+  <h2>Médiation de la consommation</h2>
+  <p>[À compléter par Giragi : nom et site du médiateur de la consommation auquel le restaurant a adhéré.]</p>
+
+  <h2>Informations pratiques</h2>
+  <p>Les prix sont indiqués en euros, toutes taxes comprises, service compris. La carte change selon les saisons et les arrivages ; les plats présentés sur ce site sont des exemples. Les informations sur les allergènes et l'origine des produits sont disponibles auprès de l'équipe, sur place.</p>
+  <p>Les avis cités sont des extraits d'avis Google publics, reproduits sans modification et non vérifiés par Giragi.</p>
+  <p>L'abus d'alcool est dangereux pour la santé, à consommer avec modération. La vente d'alcool aux mineurs est interdite.</p>
+</main>
+</body>
+</html>

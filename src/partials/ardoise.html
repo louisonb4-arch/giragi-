@@ -1,0 +1,33 @@
+<section class="ardoise" id="ardoise" aria-labelledby="ardoise-title" data-tone="night">
+  <header class="sec-head">
+    <p class="kicker" data-reveal>02 · L'ardoise</p>
+    <h2 class="h2" id="ardoise-title" data-reveal>Elle change <em>chaque semaine.</em></h2>
+    <p class="sec-head__lead" data-reveal>Au gré du marché et des saisons. Voici à quoi elle ressemble.</p>
+  </header>
+  <div class="boards">
+    <article class="board board--midi" data-reveal>
+      <header class="board__head">
+        <h3 class="board__title">{{ carte.midi.titre }}</h3>
+        <p class="board__days">{{ carte.midi.jours }}</p>
+      </header>
+      <p class="board__intro">{{ carte.midi.intro }}</p>
+      {{@ ardoiseMidi}}
+      <p class="board__note">Titres-restaurant acceptés.</p>
+    </article>
+    <article class="board board--soir" data-reveal>
+      <header class="board__head">
+        <h3 class="board__title">{{ carte.soir.titre }}</h3>
+        <p class="board__days">{{ carte.soir.jours }}</p>
+      </header>
+      <p class="board__intro">{{ carte.soir.intro }}</p>
+      {{@ ardoiseSoir}}
+    </article>
+  </div>
+  <p class="ardoise__foot" data-reveal>Prix nets en euros, TTC, service compris. Allergènes et origine des produits : l'équipe vous renseigne sur place.<br>Ardoise mise à jour le {{@ majCarte}}.</p>
+  <div class="strip" aria-hidden="true">
+    <img src="/img/croquettes-640.webp" width="640" height="853" loading="lazy" alt="">
+    <img src="/img/panisses-640.webp" width="640" height="800" loading="lazy" alt="">
+    <img src="/img/chaise-640.webp" width="640" height="853" loading="lazy" alt="">
+    <img src="/img/poivrons-640.webp" width="640" height="800" loading="lazy" alt="">
+  </div>
+</section>

@@ -1,0 +1,10 @@
+/* Apparitions au scroll (activées seulement si le JS tourne) */
+.js [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+.js [data-reveal].in{opacity:1;transform:none}
+.js [data-clip]{clip-path:inset(12% 8% 12% 8% round var(--r));transition:clip-path 1.2s var(--ease)}
+.js [data-clip] img{transform:scale(1.12);transition:transform 1.6s var(--ease)}
+.js [data-clip].in{clip-path:inset(0 0 0 0 round var(--r))}
+.js [data-clip].in img{transform:scale(1)}
+@media (prefers-reduced-motion:reduce){
+  .js [data-reveal],.js [data-clip],.js [data-clip] img{opacity:1;transform:none;clip-path:none;transition:none}
+}

@@ -1,0 +1,11 @@
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:50px;padding:0 1.4em;border-radius:999px;font-family:var(--f-ui);font-weight:600;font-size:.98rem;text-decoration:none;white-space:nowrap;transition:transform .35s var(--ease),background-color .3s,color .3s,border-color .3s}
+.btn:active{transform:scale(.97)}
+.btn--blue{background:var(--bleu);color:#fff}
+.btn--blue:hover{background:var(--bleu-d)}
+.btn--line{border:1.5px solid currentColor;color:var(--fg)}
+.btn--line:hover{background:var(--fg);color:var(--bg)}
+.btn--cream{background:var(--creme);color:var(--encre)}
+.btn--cream:hover{background:#fff}
+.btn--line-cream{border:1.5px solid var(--creme);color:var(--creme)}
+.btn--line-cream:hover{background:var(--creme);color:var(--encre)}
+.btn--paper{background:var(--papier);color:var(--encre)}

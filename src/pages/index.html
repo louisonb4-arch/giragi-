@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+{{> head}}
+<title>Giragi, bistrot et cave à manger, Nantes Saint-Clair</title>
+<meta name="description" content="Giragi, bistrot et cave à manger de quartier place Saint-Clair à Nantes. Formule courte le midi, assiettes à partager et vins de vignerons le soir. Deux terrasses, cuisine levantine de saison.">
+<link rel="canonical" href="{{ site.url }}/">
+<meta property="og:type" content="restaurant">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Giragi">
+<meta property="og:title" content="Giragi, bistrot et cave à manger, Nantes Saint-Clair">
+<meta property="og:description" content="Formule courte le midi, assiettes à partager et vins de vignerons le soir. 1 place Saint-Clair, Nantes.">
+<meta property="og:url" content="{{ site.url }}/">
+<meta property="og:image" content="{{ site.url }}/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="L'enseigne peinte de Giragi, place Saint-Clair à Nantes">
+<meta name="twitter:card" content="summary_large_image">
+{{@ jsonld}}
+<noscript><style>.intro{display:none!important}[data-reveal],[data-clip]{opacity:1!important;transform:none!important;clip-path:none!important}</style></noscript>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<div class="backdrop" aria-hidden="true"></div>
+{{> intro}}
+{{> header}}
+<main id="contenu">
+{{> hero}}
+{{> concept}}
+{{> ardoise}}
+{{> cave}}
+{{> lieu}}
+{{> avis}}
+{{> infos}}
+{{> instagram}}
+</main>
+{{> footer}}
+{{> dock}}
+<script type="module" src="/assets/js/main.js"></script>
+</body>
+</html>

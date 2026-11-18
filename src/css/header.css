@@ -1,0 +1,32 @@
+.top{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:12px;padding:12px var(--pad);padding-top:max(12px,env(safe-area-inset-top));color:var(--brun);transition:transform .5s var(--ease),background-color .5s,color .5s,box-shadow .5s}
+.top.solid{background:color-mix(in srgb,var(--bg) 92%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.top.hide{transform:translateY(-110%)}
+body.is-night .top{color:var(--creme)}
+.top__brand{display:flex;align-items:center;min-height:44px;margin-right:auto}
+.top__brand .logo-mask{width:104px}
+.top__links{display:none}
+.top__cta{min-height:44px;padding:0 1.1em;font-size:.9rem}
+.burger{width:44px;height:44px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:color-mix(in srgb,currentColor 12%,transparent)}
+.burger span{width:18px;height:1.8px;border-radius:2px;background:currentColor;transition:transform .4s var(--ease)}
+.menu-open .burger span:first-child{transform:translateY(3.9px) rotate(45deg)}
+.menu-open .burger span:last-child{transform:translateY(-3.9px) rotate(-45deg)}
+.menu-open .top{color:var(--creme);background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.menu-open .top .top__cta{background:var(--creme);color:var(--encre)}
+
+.menu{position:fixed;inset:0;z-index:45;background:var(--brun);color:var(--creme);display:flex;flex-direction:column;justify-content:space-between;padding:110px var(--pad) max(28px,env(safe-area-inset-bottom));clip-path:circle(0 at calc(100% - var(--pad) - 22px) 34px);visibility:hidden;transition:clip-path .7s var(--ease),visibility 0s .7s}
+.menu-open .menu{clip-path:circle(150% at calc(100% - var(--pad) - 22px) 34px);visibility:visible;transition:clip-path .8s var(--ease)}
+.menu ol li{border-bottom:1px solid rgba(222,217,195,.25);overflow:hidden}
+.menu ol a{display:flex;align-items:baseline;gap:14px;padding:12px 0;font-size:clamp(1.9rem,8.4vw,3rem);line-height:1.1;text-decoration:none;transform:translateY(105%);transition:transform .7s var(--ease)}
+.menu ol a i{font-family:var(--f-ui);font-style:normal;font-size:.75rem;font-weight:600;letter-spacing:.1em;opacity:.8}
+.menu-open .menu ol a{transform:none}
+.menu ol li:nth-child(2) a{transition-delay:.04s}.menu ol li:nth-child(3) a{transition-delay:.08s}.menu ol li:nth-child(4) a{transition-delay:.12s}.menu ol li:nth-child(5) a{transition-delay:.16s}.menu ol li:nth-child(6) a{transition-delay:.2s}
+.menu__foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 20px;font-family:var(--f-ui);font-weight:500}
+.menu__foot a{display:inline-flex;align-items:center;min-height:44px}
+
+@media (min-width:1000px){
+  .burger,.menu{display:none}
+  .top__links{display:flex;gap:4px;margin-right:12px;font-family:var(--f-ui);font-weight:500;font-size:.92rem}
+  .top__links a{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;text-decoration:none;border-radius:999px;transition:background-color .3s}
+  .top__links a:hover{background:color-mix(in srgb,currentColor 10%,transparent)}
+  .top__brand .logo-mask{width:124px}
+}

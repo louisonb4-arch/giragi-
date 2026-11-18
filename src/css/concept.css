@@ -1,0 +1,30 @@
+.concept{display:grid;gap:clamp(64px,13vw,140px)}
+.concept .sec-head{margin-bottom:0}
+.moment{display:grid;gap:22px}
+.moment__time{display:flex;align-items:baseline;gap:6px;font-family:var(--f-display);color:var(--accent);line-height:.8;transition:color .7s var(--ease)}
+.moment__time span{font-size:clamp(4.6rem,25vw,10rem)}
+.moment__time small{font-family:var(--f-serif);font-style:italic;font-size:clamp(1.6rem,7vw,2.6rem)}
+.moment__photo,.chef__photo,.growers__photo{border-radius:var(--r);overflow:hidden}
+.moment__photo img,.chef__photo img,.growers__photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.moment__text{display:grid;gap:14px;max-width:44ch}
+.moment__text .link{justify-self:start}
+.interlude{display:flex;justify-content:center}
+.interlude p{max-width:34ch;text-align:center;font-style:italic;font-size:1.25rem;line-height:1.4}
+.interlude .kicker{display:block;font-style:normal;margin-bottom:10px}
+.chef{display:grid;gap:24px}
+.chef__text{display:grid;gap:14px;max-width:46ch}
+.chef__text .tags{margin-top:6px}
+.growers{display:grid;gap:24px;align-items:center}
+.growers__photo img{aspect-ratio:16/11}
+.growers__lead{margin-top:12px;font-size:clamp(1.35rem,5.4vw,2rem);line-height:1.3;max-width:28ch}
+@media (min-width:900px){
+  .moment{grid-template-columns:auto 1fr 1fr;align-items:end;gap:48px}
+  .moment__time{flex-direction:column;align-items:flex-start;gap:12px;align-self:start}
+  .moment--soir{grid-template-columns:1fr 1fr auto}
+  .moment--soir .moment__time{order:3}
+  .moment--soir .moment__photo{order:2}
+  .moment--soir .moment__text{order:1;justify-self:end}
+  .chef{grid-template-columns:.8fr 1fr;align-items:center;gap:72px}
+  .growers{grid-template-columns:1fr 1fr;gap:72px}
+  .growers__photo{order:2}
+}

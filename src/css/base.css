@@ -1,0 +1,39 @@
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:var(--f-serif);font-size:1.125rem;line-height:1.55;color:var(--fg);background:var(--creme);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;transition:color .7s var(--ease)}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+p,h1,h2,h3,ul,ol,figure,blockquote{margin:0;padding:0}
+ul,ol{list-style:none}
+em{font-style:italic}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:3px solid var(--bleu);outline-offset:3px;border-radius:6px}
+body.is-night :focus-visible{outline-color:var(--creme)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:fixed;left:12px;top:-60px;z-index:100;background:var(--bleu);color:#fff;padding:12px 16px;border-radius:10px;font-family:var(--f-ui);text-decoration:none}
+.skip:focus{top:12px}
+
+/* Fond fixe qui passe du jour à la soirée */
+.backdrop{position:fixed;inset:0;z-index:-1;background:var(--bg);transition:background-color .9s var(--ease)}
+
+main>section{position:relative;padding:clamp(72px,14vw,140px) var(--pad);scroll-margin-top:64px}
+main>section>*{max-width:var(--max);margin-inline:auto}
+
+.kicker{font-family:var(--f-ui);font-weight:600;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);transition:color .7s var(--ease)}
+.h2{font-weight:400;font-size:clamp(2.5rem,10.5vw,5.4rem);line-height:.98;letter-spacing:-.015em;margin-top:14px}
+.h2 em{color:var(--accent);transition:color .7s var(--ease)}
+.h3{font-weight:500;font-size:clamp(1.6rem,6.4vw,2.3rem);line-height:1.08;letter-spacing:-.01em}
+.sec-head{margin-bottom:clamp(36px,8vw,72px)}
+.sec-head__lead{margin-top:16px;max-width:34ch;color:var(--muted);transition:color .7s var(--ease)}
+.link{font-family:var(--f-ui);font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:.5em;min-height:44px;text-decoration:none;border-bottom:1.5px solid currentColor;padding-top:6px}
+.link::after{content:"→";transition:transform .3s var(--ease)}
+.link:hover::after{transform:translateX(4px)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.tags li{font-family:var(--f-ui);font-weight:500;font-size:.85rem;padding:.5em .9em;border:1.5px solid var(--line);border-radius:999px}
+.evin{font-family:var(--f-ui);font-size:.78rem;opacity:.85;margin-top:18px}
+.logo-mask{display:block;aspect-ratio:776/172;background:currentColor;-webkit-mask:url(/icons/logo.svg) no-repeat center/contain;mask:url(/icons/logo.svg) no-repeat center/contain}
+.stars{color:var(--bleu);letter-spacing:1px}
+body.is-night .stars{color:var(--creme)}
+.nowrap{white-space:nowrap}

@@ -1,0 +1,16 @@
+.avis__head .h2{display:flex;align-items:baseline;gap:.25em;flex-wrap:wrap}
+.avis__score{font-family:var(--f-display);font-size:1.5em;line-height:.8;color:var(--brun)}
+.reviews{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;max-width:none!important;margin-inline:calc(var(--pad) * -1)!important;padding:6px var(--pad) 10px;scroll-padding-inline:var(--pad)}
+.reviews::-webkit-scrollbar{display:none}
+.review{flex:none;width:min(82vw,380px);scroll-snap-align:start;display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:26px 24px;border-radius:18px;background:var(--papier);color:var(--encre)}
+.review:nth-child(3n+2){background:var(--brun);color:var(--creme)}
+.review:nth-child(3n){background:var(--bleu);color:#fff}
+.review blockquote p{font-size:clamp(1.45rem,6vw,1.8rem);line-height:1.2}
+.review blockquote p::before{content:"“";display:block;font-family:var(--f-display);font-size:2.4em;line-height:.6;margin-bottom:10px;opacity:.7}
+.review figcaption{font-family:var(--f-ui);font-weight:500;font-size:.85rem}
+.review__stars{display:block;letter-spacing:2px;margin-bottom:4px}
+.avis__all{margin-top:22px}
+@media (min-width:1100px){
+  .reviews{flex-wrap:wrap;overflow:visible;margin-inline:auto!important;padding-inline:0;max-width:var(--max)!important}
+  .review{width:calc((100% - 28px) / 3)}
+}

@@ -1,0 +1,11 @@
+<section class="avis" id="avis" aria-labelledby="avis-title" data-tone="day">
+  <header class="sec-head avis__head">
+    <p class="kicker" data-reveal>05 · Ce qu'on en dit</p>
+    <h2 class="h2" id="avis-title" data-reveal><span class="avis__score">{{ infos.google.note }}</span><em>sur Google</em></h2>
+    <p class="sec-head__lead" data-reveal>{{ infos.google.avis }} avis au {{ infos.google.date }}. Extraits d'avis Google publics, non vérifiés par Giragi.</p>
+  </header>
+  <div class="reviews" tabindex="0" aria-label="Extraits d'avis, faites défiler">
+    {{@ avis}}
+  </div>
+  <a class="link avis__all" href="{{ infos.google.url }}" target="_blank" rel="noopener">Lire tous les avis sur Google</a>
+</section>

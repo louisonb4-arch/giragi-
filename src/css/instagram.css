@@ -1,0 +1,13 @@
+.insta{display:grid;gap:36px}
+.insta__head{display:grid;gap:16px;justify-items:start;max-width:46ch!important;margin-inline:0!important}
+.insta__head .tags{margin-top:4px}
+.insta__head .btn{margin-top:6px}
+.insta__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;max-width:var(--max)}
+.insta__grid a{display:block;border-radius:12px;overflow:hidden}
+.insta__grid img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform .8s var(--ease)}
+.insta__grid a:hover img{transform:scale(1.05)}
+@media (min-width:900px){
+  .insta{grid-template-columns:minmax(380px,.9fr) 1.1fr;align-items:center;gap:64px;max-width:var(--max);margin-inline:auto}
+  .insta>*{margin-inline:0!important}
+  .insta__grid{grid-template-columns:repeat(3,1fr);gap:12px}
+}
