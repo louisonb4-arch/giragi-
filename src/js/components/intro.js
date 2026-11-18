@@ -1,38 +1,36 @@
-// Ouverture : l'enseigne se peint, le lettrage apparaît, puis le mur se lève
+// Ouverture : le logo se peint au pinceau, le lettrage apparaît, puis le rideau se lève
+import { paint } from './paint.js';
+
 export function initIntro({ reduce }) {
   const intro = document.getElementById('intro');
   const body = document.body;
   const ready = () => body.classList.add('ready');
-  if (!intro || reduce || sessionStorageGet('giragi-intro')) {
-    intro?.classList.add('gone');
-    ready();
-    return;
-  }
+  if (!intro || reduce || seen()) { intro?.classList.add('gone'); ready(); return; }
+
+  intro.querySelectorAll('.intro__lettering span').forEach((s, i) => s.style.setProperty('--n', i));
   body.classList.add('locked');
   const timers = [];
   let done = false;
   const open = () => {
     if (done) return; done = true;
     timers.forEach(clearTimeout);
-    intro.classList.add('paint', 'letter', 'open');
-    setTimeout(ready, 250);
+    intro.classList.add('letter', 'open');
+    setTimeout(ready, 300);
     setTimeout(() => {
       intro.classList.add('gone');
       if (!body.classList.contains('menu-open')) body.classList.remove('locked');
-    }, 1000);
-    sessionStorageSet('giragi-intro', '1');
+    }, 1050);
+    remember();
   };
-  const start = () => {
-    timers.push(setTimeout(() => intro.classList.add('paint'), 150));
-    timers.push(setTimeout(() => intro.classList.add('letter'), 1050));
-    timers.push(setTimeout(open, 2350));
-  };
-  (document.fonts?.ready ?? Promise.resolve()).then(start);
-  setTimeout(open, 4500);                // filet de sécurité
+  (document.fonts?.ready ?? Promise.resolve()).then(() => {
+    timers.push(setTimeout(() => paint(intro.querySelector('.paint'), 1.45), 120));
+    timers.push(setTimeout(() => intro.classList.add('letter'), 1500));
+    timers.push(setTimeout(open, 2700));
+  });
+  setTimeout(open, 5000);                 // filet de sécurité
   intro.addEventListener('click', open);  // tap pour passer
   addEventListener('keydown', open, { once: true });
 }
 
-// Une seule ouverture par visite (stockage parfois indisponible : on ignore)
-function sessionStorageGet(k) { try { return sessionStorage.getItem(k); } catch { return null; } }
-function sessionStorageSet(k, v) { try { sessionStorage.setItem(k, v); } catch { /* rien */ } }
+const seen = () => { try { return sessionStorage.getItem('giragi-intro'); } catch { return null; } };
+const remember = () => { try { sessionStorage.setItem('giragi-intro', '1'); } catch { /* rien */ } };

@@ -1,55 +1,113 @@
 // Rendus HTML générés à partir de /data — appelés depuis les templates avec {{@ nom}}
+import { readFileSync } from 'node:fs';
+const LOGO = JSON.parse(readFileSync(new URL('./logo.json', import.meta.url), 'utf8'));
+
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const h = t => t.replace(/^0/, '').replace(':00', 'h').replace(':', 'h');
 const creneau = ([a, b]) => `${h(a)}–${h(b)}`;
+const midiOf = j => j.creneaux.find(([a]) => a < '16:00');
+const soirOf = j => j.creneaux.find(([a]) => a >= '16:00');
 
-/* ---------- Horaires ---------- */
+/* ---------- Logo peint au pinceau (SVG + masque de traits) ---------- */
+let logoId = 0;
+export function logoPaint() {
+  const id = `brush${++logoId}`;
+  const strokes = LOGO.strokes.flatMap((letter, li) => letter.map(d => `<path pathLength="1" style="--l:${li}" d="${d}"/>`)).join('');
+  const fill = LOGO.fill.map(d => `<path d="${d}"/>`).join('');
+  return `<svg class="paint" viewBox="-12 -12 ${LOGO.w + 24} ${LOGO.h + 24}" role="img" aria-label="Giragi">
+  <defs><mask id="${id}" maskUnits="userSpaceOnUse" x="-30" y="-30" width="${LOGO.w + 60}" height="${LOGO.h + 60}"><g class="paint__brush">${strokes}</g></mask></defs>
+  <g mask="url(#${id})" fill="currentColor" fill-rule="evenodd">${fill}</g></svg>`;
+}
+
+/* ---------- Éphéméride (hero) ---------- */
+export function ephemeride({ infos }) {
+  const pages = infos.horaires.jours.map(j => {
+    const midi = midiOf(j), soir = soirOf(j);
+    let body;
+    if (j.code === 'Su') {
+      body = `<p class="ephem__closed">Fermé. Mais c'est notre nom :</p><p class="ephem__note"><em>Giragi</em> veut dire « dimanche » en arménien.</p>`;
+    } else if (!j.creneaux.length) {
+      body = `<p class="ephem__closed">Fermé.</p><p class="ephem__note">On se retrouve mardi midi.</p>`;
+    } else {
+      body = `<dl class="ephem__services">
+        <div${midi ? '' : ' class="off"'}><dt>Midi</dt><dd>${midi ? creneau(midi) : 'pas de service'}</dd></div>
+        <div${soir ? '' : ' class="off"'}><dt>Soir</dt><dd>${soir ? creneau(soir) : 'pas de service'}</dd></div>
+      </dl>`;
+    }
+    return `<li class="ephem__page${j.code === 'Su' ? ' ephem__page--sunday' : ''}" data-day="${j.code}">
+      <p class="ephem__label"><span data-label>${esc(j.jour)}</span><b class="ephem__num" data-num></b></p>
+      <p class="ephem__day">${esc(j.jour)}</p>
+      ${body}
+    </li>`;
+  });
+  // Ordre par défaut (sans JS) : du mardi au lundi
+  const order = ['Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo'];
+  const byCode = Object.fromEntries(infos.horaires.jours.map((j, i) => [j.code, pages[i]]));
+  return order.map(c => byCode[c]).join('');
+}
+
+/* ---------- Horaires (tableau) ---------- */
 export function horaires({ infos }) {
   const rows = infos.horaires.jours.map(j => {
-    const ferme = !j.creneaux.length;
-    const midi = j.creneaux.find(([a]) => a < '16:00');
-    const soir = j.creneaux.find(([a]) => a >= '16:00');
+    const ferme = !j.creneaux.length, midi = midiOf(j), soir = soirOf(j);
     return `<tr${ferme ? ' class="is-closed"' : ''} data-day="${j.code}">
       <th scope="row">${j.jour}</th>
-      ${ferme ? '<td colspan="2">Fermé</td>' : `<td>${midi ? creneau(midi) : '<span aria-label="pas de service">·</span>'}</td><td>${soir ? creneau(soir) : '<span aria-label="pas de service">·</span>'}</td>`}
+      ${ferme ? '<td colspan="2">Fermé</td>' : `<td>${midi ? creneau(midi) : '<span aria-label="pas de service">—</span>'}</td><td>${soir ? creneau(soir) : '<span aria-label="pas de service">—</span>'}</td>`}
     </tr>`;
   }).join('');
   return `<table class="hours"><thead><tr><td></td><th scope="col">Midi</th><th scope="col">Soir</th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
-/* ---------- Ardoise ---------- */
-const plat = p => `<li class="dish${p.dessert ? ' dish--dessert' : ''}">
-  <p class="dish__name">${esc(p.nom)}${p.vg ? ' <abbr class="vg" title="Végétarien">VG</abbr>' : ''}</p>
-  ${p.detail ? `<p class="dish__detail">${esc(p.detail)}</p>` : ''}
-  ${p.prix ? `<p class="dish__price">${esc(p.prix)}</p>` : ''}
+/* ---------- Ardoise : bons de cuisine sur le rail ---------- */
+const ticket = (p, n, service) => `<li class="ticket" style="--n:${n}">
+  <div class="ticket__paper">
+    <p class="ticket__top"><span>${service}</span><span>N° ${String(n).padStart(2, '0')}</span></p>
+    <p class="ticket__name">${esc(p.nom)}</p>
+    ${p.detail ? `<p class="ticket__detail">${esc(p.detail)}</p>` : ''}
+    <p class="ticket__foot">${p.vg ? '<abbr class="ticket__vg" title="Végétarien">VG</abbr>' : '<span></span>'}${p.prix ? `<b>${esc(p.prix)}</b>` : ''}</p>
+  </div>
 </li>`;
 
-export function ardoiseMidi({ carte }) {
+export function railMidi({ carte }) {
   const m = carte.midi;
-  const formules = m.formules.map(f => `<li class="formula">
-    <span class="formula__name">${esc(f.nom)}${f.detail ? `<small>${esc(f.detail)}</small>` : ''}</span>
-    <span class="formula__dots" aria-hidden="true"></span>
-    <span class="formula__price">${esc(f.prix)}</span></li>`).join('');
-  return `<ul class="formulas">${formules}</ul>
-  <p class="board__example">${esc(m.exemple)}</p>
-  <ul class="dishes">${m.plats.map(plat).join('')}</ul>`;
+  const formules = m.formules.map(f => `<li><span>${esc(f.nom)}${f.detail ? `<small>${esc(f.detail)}</small>` : ''}</span><b>${esc(f.prix)}</b></li>`).join('');
+  const head = `<li class="ticket ticket--big" style="--n:0"><div class="ticket__paper">
+    <p class="ticket__top"><span>Midi</span><span>${esc(m.jours)}</span></p>
+    <p class="ticket__name">La formule</p>
+    <ul class="ticket__formulas">${formules}</ul>
+    <p class="ticket__detail">${esc(m.intro)}</p>
+  </div></li>`;
+  return head + m.plats.map((p, i) => ticket(p, i + 1, 'Midi')).join('');
 }
 
-export function ardoiseSoir({ carte }) {
+export function railSoir({ carte }) {
   const s = carte.soir;
-  return `<div class="signature"><span class="signature__tag">Tous les soirs</span><p class="dish__name">${esc(s.signature.nom)}</p><p class="dish__detail">${esc(s.signature.detail)}</p></div>
-  <p class="board__example">${esc(s.exemple)}</p>
-  <ul class="dishes">${s.plats.map(plat).join('')}</ul>`;
+  const head = `<li class="ticket ticket--big" style="--n:0"><div class="ticket__paper">
+    <p class="ticket__top"><span>Soir</span><span>${esc(s.jours)}</span></p>
+    <p class="ticket__name">${esc(s.signature.nom)}</p>
+    <p class="ticket__detail">${esc(s.signature.detail)}.</p>
+    <p class="ticket__detail">${esc(s.intro)}</p>
+    <p class="ticket__stamp">Tous les soirs</p>
+  </div></li>`;
+  return head + s.plats.map((p, i) => ticket(p, i + 1, p.dessert ? 'Dessert' : 'Soir')).join('');
 }
 
+export const exempleMidi = ({ carte }) => esc(carte.midi.exemple);
+export const exempleSoir = ({ carte }) => esc(carte.soir.exemple);
 export const majCarte = ({ carte }) => new Date(carte.miseAJour).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 
-/* ---------- Avis ---------- */
-export function avis({ avis }) {
-  return avis.avis.map((a, i) => `<figure class="review" data-reveal style="--i:${i}">
+/* ---------- Avis : ticket de caisse ---------- */
+export function receipt({ avis, infos }) {
+  const lines = avis.avis.map((a, i) => `<li class="receipt__item">
+    <p class="receipt__row"><span>${String(i + 1).padStart(2, '0')} x ${esc(a.auteur)}</span><span aria-label="5 étoiles sur 5">★★★★★</span></p>
     <blockquote><p>${esc(a.texte)}</p></blockquote>
-    <figcaption><span class="review__stars" aria-label="5 étoiles sur 5">★★★★★</span>${esc(a.auteur)} · ${esc(a.date)}</figcaption>
-  </figure>`).join('');
+    <p class="receipt__date">${esc(a.date)}</p>
+  </li>`).join('');
+  return `<ul class="receipt__items">${lines}</ul>
+  <p class="receipt__sep" aria-hidden="true"></p>
+  <p class="receipt__total"><span>Total</span><b>${esc(infos.google.note)} / 5</b></p>
+  <p class="receipt__row"><span>Avis Google</span><span>${esc(infos.google.avis)}</span></p>
+  <p class="receipt__row"><span>Relevé le</span><span>${esc(infos.google.date)}</span></p>`;
 }
 
 /* ---------- Données structurées ---------- */

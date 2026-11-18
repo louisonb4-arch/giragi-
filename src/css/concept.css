@@ -1,30 +1,30 @@
-.concept{display:grid;gap:clamp(64px,13vw,140px)}
-.concept .sec-head{margin-bottom:0}
-.moment{display:grid;gap:22px}
-.moment__time{display:flex;align-items:baseline;gap:6px;font-family:var(--f-display);color:var(--accent);line-height:.8;transition:color .7s var(--ease)}
-.moment__time span{font-size:clamp(4.6rem,25vw,10rem)}
-.moment__time small{font-family:var(--f-serif);font-style:italic;font-size:clamp(1.6rem,7vw,2.6rem)}
-.moment__photo,.chef__photo,.growers__photo{border-radius:var(--r);overflow:hidden}
-.moment__photo img,.chef__photo img,.growers__photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
-.moment__text{display:grid;gap:14px;max-width:44ch}
-.moment__text .link{justify-self:start}
-.interlude{display:flex;justify-content:center}
-.interlude p{max-width:34ch;text-align:center;font-style:italic;font-size:1.25rem;line-height:1.4}
-.interlude .kicker{display:block;font-style:normal;margin-bottom:10px}
-.chef{display:grid;gap:24px}
+.concept{overflow:hidden}
+.service{display:grid;gap:22px;align-items:center;margin-top:clamp(30px,8vw,60px)}
+.plate{--size:min(78vw,380px);position:relative;width:var(--size);height:var(--size);border-radius:50%;padding:calc(var(--size) * .07);background:var(--blanc);box-shadow:0 30px 50px -30px rgba(27,18,16,.55),inset 0 0 0 calc(var(--size) * .045) #fff,inset 0 0 0 calc(var(--size) * .05) rgba(131,59,0,.18);will-change:transform}
+.plate img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.service--soir .plate{justify-self:end;background:#2a1a12;box-shadow:0 30px 50px -30px rgba(27,18,16,.6),inset 0 0 0 calc(var(--size) * .045) #3a271c,inset 0 0 0 calc(var(--size) * .05) rgba(222,217,195,.2)}
+.service__text{display:grid;gap:12px;max-width:42ch}
+.service__time{font-family:var(--f-mono);font-weight:500;font-size:.95rem;letter-spacing:.06em;color:var(--bleu)}
+.cup{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:center;margin:clamp(50px,12vw,90px) auto!important;max-width:520px!important;padding:18px 20px;border-radius:var(--r);background:var(--papier)}
+.cup__art{width:72px;fill:none;stroke:var(--brun);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.cup__steam{stroke-dasharray:6 10;animation:steam 2.4s linear infinite}
+@keyframes steam{to{stroke-dashoffset:-32}}
+.cup p{font-style:italic;font-size:1.08rem;line-height:1.4}
+.cup .kicker{display:block;font-style:normal;margin-bottom:4px}
+.chef{display:grid;gap:28px;margin-top:clamp(70px,14vw,130px)}
+.chef__photo{position:relative;width:min(72%,340px);margin:0 auto;transform:rotate(-3deg)}
+.chef__photo img{border-radius:6px;box-shadow:0 20px 40px -24px rgba(27,18,16,.6);border:10px solid var(--blanc);border-bottom-width:42px}
+.tape{position:absolute;width:86px;height:28px;background:rgba(236,232,218,.75);box-shadow:0 1px 2px rgba(27,18,16,.15)}
+.tape--a{top:-10px;left:-18px;transform:rotate(-24deg)}
+.tape--b{top:-8px;right:-20px;transform:rotate(18deg)}
 .chef__text{display:grid;gap:14px;max-width:46ch}
-.chef__text .tags{margin-top:6px}
-.growers{display:grid;gap:24px;align-items:center}
-.growers__photo img{aspect-ratio:16/11}
-.growers__lead{margin-top:12px;font-size:clamp(1.35rem,5.4vw,2rem);line-height:1.3;max-width:28ch}
+.chef__name{font-size:clamp(2.2rem,10vw,3.4rem)}
+.growers{margin-top:clamp(60px,12vw,110px)!important;padding-top:28px;border-top:2px dashed rgba(131,59,0,.35)}
+.growers__lead{margin-top:12px;font-size:clamp(1.35rem,5.6vw,2.1rem);line-height:1.28;max-width:30ch}
 @media (min-width:900px){
-  .moment{grid-template-columns:auto 1fr 1fr;align-items:end;gap:48px}
-  .moment__time{flex-direction:column;align-items:flex-start;gap:12px;align-self:start}
-  .moment--soir{grid-template-columns:1fr 1fr auto}
-  .moment--soir .moment__time{order:3}
-  .moment--soir .moment__photo{order:2}
-  .moment--soir .moment__text{order:1;justify-self:end}
+  .service{grid-template-columns:auto 1fr;gap:72px}
+  .service--soir{grid-template-columns:1fr auto}
+  .service--soir .plate{order:2}
+  .service--soir .service__text{justify-self:end}
   .chef{grid-template-columns:.8fr 1fr;align-items:center;gap:72px}
-  .growers{grid-template-columns:1fr 1fr;gap:72px}
-  .growers__photo{order:2}
 }

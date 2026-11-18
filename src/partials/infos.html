@@ -1,37 +1,52 @@
-<section class="infos" id="infos" aria-labelledby="infos-title" data-tone="day">
+<section class="infos" id="infos" aria-labelledby="infos-title">
   <header class="sec-head">
     <p class="kicker" data-reveal>06 · Venir</p>
-    <h2 class="h2" id="infos-title" data-reveal>Rendez-vous <em>place Saint-Clair.</em></h2>
+    <h2 class="h2" id="infos-title" data-wobble>Rendez-vous place Saint-Clair.</h2>
   </header>
+
+  <div class="postcard" data-postcard>
+    <div class="postcard__inner">
+      <div class="postcard__face postcard__back">
+        <div class="postcard__msg">
+          <p>Rendez-vous place Saint-Clair, face à l'église.</p>
+          <p>Le midi du mardi au vendredi, le soir du mercredi au samedi. Le soir, pensez à réserver !</p>
+          <p class="postcard__sign">— Giragi</p>
+        </div>
+        <div class="postcard__addr">
+          <div class="postcard__stamp" aria-hidden="true"><span class="logo-mask"></span></div>
+          <div class="postcard__postmark" aria-hidden="true"><span>Nantes · Saint-Clair</span><b data-postmark></b></div>
+          <p class="postcard__lines"><span>Giragi</span><span>{{ infos.adresse.rue }}</span><span>{{ infos.adresse.cp }} {{ infos.adresse.ville }}</span></p>
+        </div>
+      </div>
+      <div class="postcard__face postcard__front" aria-hidden="true">
+        <img src="/img/enseigne-640.webp" srcset="/img/enseigne-640.webp 640w, /img/enseigne.webp 1080w" sizes="(min-width: 900px) 40vw, 90vw" width="1080" height="1251" loading="lazy" alt="">
+        <p>Bons baisers de la place Saint-Clair</p>
+      </div>
+    </div>
+    <button class="postcard__flip" type="button" data-flip aria-pressed="false">Retourner la carte <span aria-hidden="true">↻</span></button>
+  </div>
+
   <div class="infos__grid">
+    <div class="card" data-reveal>
+      <h3 class="card__title">Horaires</h3>
+      {{@ horaires}}
+    </div>
+    <div class="card card--blue" data-reveal>
+      <h3 class="card__title">Réserver</h3>
+      <p>En ligne, ou par téléphone pendant les heures d'ouverture.</p>
+      <div class="card__actions">
+        <a class="btn btn--cream" href="{{ infos.reservation.url }}" target="_blank" rel="noopener">{{ infos.reservation.libelle }}</a>
+        <a class="btn btn--line-cream" href="tel:{{ infos.telephone.lien }}">{{ infos.telephone.affiche }}</a>
+      </div>
+      <a class="card__mail" href="mailto:{{ infos.email.adresse }}">{{ infos.email.adresse }}</a>
+    </div>
     <figure class="map" data-reveal>
       <a href="{{ infos.adresse.itineraire }}" target="_blank" rel="noopener" aria-label="Itinéraire vers Giragi sur Google Maps">
-        <img src="/img/plan.webp" width="840" height="660" loading="lazy" alt="Plan du quartier : Giragi est place Saint-Clair, face à l'église, rue Ampère">
+        <img src="/img/plan.webp" width="840" height="660" loading="lazy" alt="Plan du quartier : Giragi est place Saint-Clair, face à l'église">
         <span class="map__pin" aria-hidden="true"><span class="logo-mask"></span></span>
+        <span class="map__go">Itinéraire →</span>
       </a>
       <figcaption>Plan © contributeurs OpenStreetMap</figcaption>
     </figure>
-    <div class="infos__cards">
-      <div class="card" data-reveal>
-        <h3 class="card__title">Adresse</h3>
-        <p class="card__big">{{ infos.adresse.rue }}<br>{{ infos.adresse.cp }} {{ infos.adresse.ville }}</p>
-        <p class="card__muted">{{ infos.adresse.repere }} · quartier Zola</p>
-        <a class="btn btn--line" href="{{ infos.adresse.itineraire }}" target="_blank" rel="noopener">Itinéraire</a>
-      </div>
-      <div class="card" data-reveal>
-        <h3 class="card__title">Horaires</h3>
-        {{@ horaires}}
-        <p class="card__muted" id="today" hidden></p>
-      </div>
-      <div class="card card--blue" data-reveal>
-        <h3 class="card__title">Réserver</h3>
-        <p>En ligne, ou par téléphone pendant les heures d'ouverture. Le soir, c'est souvent complet : pensez à réserver.</p>
-        <div class="card__actions">
-          <a class="btn btn--cream" href="{{ infos.reservation.url }}" target="_blank" rel="noopener">{{ infos.reservation.libelle }}</a>
-          <a class="btn btn--line-cream" href="tel:{{ infos.telephone.lien }}">{{ infos.telephone.affiche }}</a>
-        </div>
-        <a class="card__mail" href="mailto:{{ infos.email.adresse }}">{{ infos.email.adresse }}</a>
-      </div>
-    </div>
   </div>
 </section>

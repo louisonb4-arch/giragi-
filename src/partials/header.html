@@ -5,24 +5,26 @@
     <a href="#ardoise">L'ardoise</a>
     <a href="#cave">La cave</a>
     <a href="#lieu">Le lieu</a>
-    <a href="#infos">Infos</a>
+    <a href="#infos">Venir</a>
   </nav>
   <a class="btn btn--blue top__cta" href="{{ infos.reservation.url }}" target="_blank" rel="noopener">Réserver</a>
   <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span></button>
 </header>
 <div class="menu" id="menu" aria-hidden="true">
-  <nav aria-label="Menu principal">
-    <ol>
-      <li><a href="#concept"><i>01</i>Le concept</a></li>
-      <li><a href="#ardoise"><i>02</i>L'ardoise</a></li>
-      <li><a href="#cave"><i>03</i>La cave</a></li>
-      <li><a href="#lieu"><i>04</i>Le lieu &amp; les terrasses</a></li>
-      <li><a href="#avis"><i>05</i>Ce qu'on en dit</a></li>
-      <li><a href="#infos"><i>06</i>Venir</a></li>
-    </ol>
-  </nav>
-  <div class="menu__foot">
-    <a href="tel:{{ infos.telephone.lien }}">{{ infos.telephone.affiche }}</a>
-    <a href="{{ infos.instagram.url }}" target="_blank" rel="noopener">{{ infos.instagram.pseudo }}</a>
+  <div class="menu__sheet">
+    <nav aria-label="Menu principal">
+      <ol>
+        <li style="--i:0"><a href="#concept">Le concept</a></li>
+        <li style="--i:1"><a href="#ardoise">L'ardoise</a></li>
+        <li style="--i:2"><a href="#cave">La cave</a></li>
+        <li style="--i:3"><a href="#lieu">Le lieu</a></li>
+        <li style="--i:4"><a href="#avis">Les avis</a></li>
+        <li style="--i:5"><a href="#infos">Venir</a></li>
+      </ol>
+    </nav>
+    <div class="menu__foot">
+      <a class="btn btn--blue" href="{{ infos.reservation.url }}" target="_blank" rel="noopener">Réserver une table</a>
+      <a class="btn btn--line" href="tel:{{ infos.telephone.lien }}">{{ infos.telephone.affiche }}</a>
+    </div>
   </div>
 </div>

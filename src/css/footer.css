@@ -1,9 +1,8 @@
 .foot{position:relative;padding:clamp(72px,14vw,120px) var(--pad) calc(110px + env(safe-area-inset-bottom));display:grid;gap:26px;color:var(--creme);background:var(--brun)}
 .foot>*{width:100%;max-width:var(--max);margin-inline:auto}
-.foot__sign .logo-mask{width:100%}
 .foot__say{font-style:italic;font-size:clamp(1.3rem,5.4vw,2rem);line-height:1.25;text-wrap:balance}
-.foot__cols{display:grid;gap:18px;padding-top:24px;border-top:1px solid rgba(222,217,195,.3);font-size:1.05rem}
+.foot__cols{display:grid;gap:14px;padding-top:24px;border-top:1px solid rgba(222,217,195,.3);font-size:1.05rem}
 .foot__cols a{display:inline-flex;align-items:center;min-height:44px}
 .foot__legal{font-family:var(--f-ui);font-size:.82rem;line-height:1.9}
-.foot__legal a{display:inline-block;padding:10px 0}
+.foot__legal a{display:inline-block;padding:10px 2px}
 @media (min-width:900px){.foot__cols{grid-template-columns:repeat(3,1fr)}.foot{padding-bottom:48px}}

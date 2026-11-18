@@ -1,0 +1,38 @@
+/* Éphéméride : une page par jour, on l'arrache pour voir le lendemain */
+.ephem{position:relative;z-index:2;width:min(84%,340px);margin:-96px 0 0 auto;transform:rotate(2.5deg);transform-origin:50% 0}
+.js .ephem{opacity:0;transform:translateY(40px) rotate(8deg);transition:opacity .8s var(--ease) .3s,transform 1s var(--spring) .3s}
+.js .ready .ephem{opacity:1;transform:rotate(2.5deg)}
+.ephem__rings{position:relative;z-index:3;height:30px;border-radius:12px 12px 0 0;background:var(--brun);display:flex;justify-content:space-evenly;align-items:center}
+.ephem__rings i{width:9px;height:9px;border-radius:50%;background:var(--creme);box-shadow:0 -12px 0 -2px #2b2420,0 -6px 0 -1px #6b625a}
+.ephem__pages{position:relative;height:214px}
+.ephem__page{position:absolute;inset:0;padding:14px 18px 18px;background:var(--blanc);border-radius:0 0 12px 12px;box-shadow:0 18px 30px -18px rgba(27,18,16,.45);transform-origin:12% 0;backface-visibility:hidden;
+  background-image:linear-gradient(rgba(131,59,0,.07) 1px,transparent 1px);background-size:100% 26px;background-position:0 58px}
+.ephem__page::before{content:"";position:absolute;inset:0 0 auto;height:6px;background:radial-gradient(circle at 5px 0,transparent 4px,var(--blanc) 4.5px) 0 0/10px 6px}
+.ephem__page:nth-child(n+4){visibility:hidden}
+.ephem__page:nth-child(1){z-index:3}
+.ephem__page:nth-child(2){z-index:2;transform:translateY(5px) rotate(-1deg)}
+.ephem__page:nth-child(3){z-index:1;transform:translateY(10px) rotate(1.2deg)}
+.ephem__label{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-ui);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.ephem__label .is-today{color:#fff;background:var(--bleu);padding:.25em .6em;border-radius:999px;letter-spacing:.1em}
+.ephem__num{font-family:var(--f-display);font-weight:800;font-style:italic;font-size:2.6rem;line-height:.8;letter-spacing:0;color:var(--brun)}
+.ephem__day{margin-top:2px;font-family:var(--f-display);font-weight:800;font-style:italic;font-size:2.5rem;line-height:1;color:var(--brun)}
+.ephem__services{display:grid;gap:4px;margin-top:14px;font-family:var(--f-mono);font-size:.95rem}
+.ephem__services div{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(27,18,16,.25);padding-bottom:4px}
+.ephem__services dt{font-weight:500}
+.ephem__services .off{color:#7A6A5E;text-decoration:line-through;text-decoration-thickness:1px}
+.ephem__closed{margin-top:12px;font-style:italic;font-size:1.25rem}
+.ephem__note{margin-top:4px;font-size:1.02rem;color:var(--muted)}
+.ephem__page--sunday{background-color:#F1E6CE}
+.ephem__page.is-tearing{z-index:5;animation:tear .9s cubic-bezier(.5,0,.6,1) forwards;pointer-events:none}
+@keyframes tear{
+  0%{transform:none}
+  22%{transform:translateY(-8px) rotate(-5deg)}
+  100%{transform:translate(70px,150%) rotate(32deg);opacity:0}
+}
+.ephem__tear{display:flex;align-items:center;gap:6px;margin:16px 0 0 auto;min-height:44px;padding:0 16px;border-radius:999px;background:var(--brun);color:var(--creme);font-family:var(--f-display);font-weight:700;font-size:.98rem;transform:rotate(-2.5deg)}
+.ephem__tear:active{transform:rotate(-2.5deg) scale(.94)}
+.ephem__tear span{display:inline-block;animation:nudge 1.6s var(--ease) infinite}
+@keyframes nudge{0%,100%{transform:none}50%{transform:translateY(-4px)}}
+.ephem.hint .ephem__page:nth-child(1){animation:peel 1.4s var(--ease)}
+@keyframes peel{30%{transform:rotate(-3deg) translateY(-4px)}60%{transform:rotate(1deg)}100%{transform:none}}
+@media (prefers-reduced-motion:reduce){.ephem__page.is-tearing{animation:none;opacity:0}.ephem__tear span{animation:none}}

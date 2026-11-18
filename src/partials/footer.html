@@ -1,13 +1,11 @@
-<footer class="foot" data-tone="night">
-  <div class="foot__sign" data-reveal><span class="logo-mask" role="img" aria-label="Giragi"></span></div>
-  <p class="foot__say" data-reveal>Se prononce « Guiragui ». Veut dire « dimanche » en arménien.</p>
+<footer class="foot">
+  <div class="foot__sign" data-paint-on-view>{{@ logoPaint}}</div>
+  <p class="foot__say">Se prononce « Guiragui ». Veut dire « dimanche » en arménien.</p>
   <div class="foot__cols">
     <p>{{ infos.adresse.rue }}<br>{{ infos.adresse.cp }} {{ infos.adresse.ville }}</p>
     <p><a href="tel:{{ infos.telephone.lien }}">{{ infos.telephone.affiche }}</a><br><a href="mailto:{{ infos.email.adresse }}">{{ infos.email.adresse }}</a></p>
     <p><a href="{{ infos.reservation.url }}" target="_blank" rel="noopener">Réserver</a><br><a href="{{ infos.instagram.url }}" target="_blank" rel="noopener">Instagram</a></p>
   </div>
-  <p class="foot__legal">
-    © {{ site.annee }} Giragi · <a href="/mentions-legales">Mentions légales</a> · Photos {{ infos.credits.photos }} · Enseigne peinte par {{ infos.credits.enseigne }} · Site : <a href="https://vokumagency.com" target="_blank" rel="noopener">Vokum</a>
-  </p>
+  <p class="foot__legal">© {{ site.annee }} Giragi · <a href="/mentions-legales">Mentions légales</a> · Photos {{ infos.credits.photos }} · Enseigne peinte par {{ infos.credits.enseigne }} · Site : <a href="https://vokumagency.com" target="_blank" rel="noopener">Vokum</a></p>
   <p class="evin">L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
 </footer>
