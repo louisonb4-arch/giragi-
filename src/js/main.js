@@ -10,7 +10,7 @@ initHours();
 
 // Le logo se peint sur l'enseigne au chargement (une seule fois)
 const sign = document.querySelector('[data-paint]');
-if (sign) (document.fonts?.ready ?? Promise.resolve()).then(() => paint(sign.querySelector('svg'), 1.5));
+if (sign) paint(sign.querySelector('svg'), 1.5); // dessin SVG : pas besoin d'attendre les polices
 
 // Une fois la page chargée, on précharge les photos restantes :
 // plus de cadres vides quand on descend vite.
