@@ -1,23 +1,9 @@
-<section class="ardoise" id="ardoise" aria-labelledby="ardoise-title">
-  <header class="sec-head">
-    <p class="kicker" data-reveal>02 · L'ardoise</p>
-    <h2 class="h2" id="ardoise-title" data-wobble>Elle change chaque semaine.</h2>
-    <p class="sec-head__lead" data-reveal>Au gré du marché et des saisons. Faites glisser les bons, comme au passe.</p>
-  </header>
-
-  <div class="rail-wrap">
-    <p class="rail-wrap__label"><b>Le midi</b><span>{{@ exempleMidi}}</span></p>
-    <div class="rail" data-rail tabindex="0" aria-label="L'ardoise du midi, faites défiler">
-      <ul class="rail__tickets">{{@ railMidi}}</ul>
-    </div>
+<section class="ardoise c" id="ardoise" aria-labelledby="ardoise-title">
+  <span class="k" data-reveal>L'ardoise</span>
+  <h2 class="hand" id="ardoise-title" data-reveal>Elle change chaque semaine !</h2>
+  <div class="menu-card" data-reveal>
+    <span class="logo-mask menu-card__logo" aria-hidden="true"></span>
+    {{@ ardoise}}
+    <p class="menu-card__note">Prix nets en euros, TTC, service compris. Titres-restaurant acceptés le midi. Allergènes et origine des produits : l'équipe vous renseigne sur place. Mise à jour le {{@ majCarte}}.</p>
   </div>
-
-  <div class="rail-wrap">
-    <p class="rail-wrap__label"><b>Le soir</b><span>{{@ exempleSoir}}</span></p>
-    <div class="rail" data-rail tabindex="0" aria-label="Les assiettes du soir, faites défiler">
-      <ul class="rail__tickets">{{@ railSoir}}</ul>
-    </div>
-  </div>
-
-  <p class="ardoise__foot" data-reveal>Prix nets en euros, TTC, service compris. Titres-restaurant acceptés le midi. Allergènes et origine des produits : l'équipe vous renseigne sur place. Ardoise mise à jour le {{@ majCarte}}.</p>
 </section>

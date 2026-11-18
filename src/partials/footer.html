@@ -1,11 +1,15 @@
-<footer class="foot">
-  <div class="foot__sign" data-paint-on-view>{{@ logoPaint}}</div>
+<footer class="foot c">
+  <a class="k" href="{{ infos.instagram.url }}" target="_blank" rel="noopener">{{ infos.instagram.pseudo }}</a>
+  <p class="hand" data-reveal>À mardi midi !</p>
+  <p class="foot__s" data-reveal>Les cartes de la semaine passent d'abord par Instagram.</p>
+  <ul class="foot__grid">
+    <li data-reveal><a href="https://www.instagram.com/p/DMf06CxMTQ8/" target="_blank" rel="noopener"><img src="/img/pain-640.webp" width="640" height="800" loading="lazy" alt="Le pain-huile d'olive maison"></a></li>
+    <li data-reveal style="--i:1"><a href="https://www.instagram.com/p/DND5y7tCgGG/" target="_blank" rel="noopener"><img src="/img/coupe-640.webp" width="640" height="799" loading="lazy" alt="La Coupe Pompon, dessert meringué"></a></li>
+    <li data-reveal style="--i:2"><a href="https://www.instagram.com/p/DZDOtUiDLJK/" target="_blank" rel="noopener"><img src="/img/tabouret-640.webp" width="640" height="853" loading="lazy" alt="Chaise, tabouret et assiettes du soir au soleil"></a></li>
+    <li data-reveal style="--i:3"><a href="https://www.instagram.com/p/DU0_xRsDCPH/" target="_blank" rel="noopener"><img src="/img/donut-640.webp" width="640" height="853" loading="lazy" alt="Sticky donut tressé, glaze miel salé"></a></li>
+  </ul>
+  <span class="logo-mask foot__logo" role="img" aria-label="Giragi"></span>
   <p class="foot__say">Se prononce « Guiragui ». Veut dire « dimanche » en arménien.</p>
-  <div class="foot__cols">
-    <p>{{ infos.adresse.rue }}<br>{{ infos.adresse.cp }} {{ infos.adresse.ville }}</p>
-    <p><a href="tel:{{ infos.telephone.lien }}">{{ infos.telephone.affiche }}</a><br><a href="mailto:{{ infos.email.adresse }}">{{ infos.email.adresse }}</a></p>
-    <p><a href="{{ infos.reservation.url }}" target="_blank" rel="noopener">Réserver</a><br><a href="{{ infos.instagram.url }}" target="_blank" rel="noopener">Instagram</a></p>
-  </div>
-  <p class="foot__legal">© {{ site.annee }} Giragi · <a href="/mentions-legales">Mentions légales</a> · Photos {{ infos.credits.photos }} · Enseigne peinte par {{ infos.credits.enseigne }} · Site : <a href="https://vokumagency.com" target="_blank" rel="noopener">Vokum</a></p>
+  <p class="foot__leg">{{ infos.adresse.rue }}, {{ infos.adresse.ville }} · <a href="tel:{{ infos.telephone.lien }}">{{ infos.telephone.affiche }}</a> · <a href="mailto:{{ infos.email.adresse }}">{{ infos.email.adresse }}</a><br>© {{ site.annee }} Giragi · <a href="/mentions-legales">Mentions légales</a> · Photos {{ infos.credits.photos }} · Site : <a href="https://vokumagency.com" target="_blank" rel="noopener">Vokum</a></p>
   <p class="evin">L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
 </footer>

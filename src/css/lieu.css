@@ -1,32 +1,22 @@
-/* La visite : un chemin se dessine au fil du scroll, de l'église à la cour */
-.walk{position:relative;display:grid;gap:clamp(70px,18vw,140px);padding-bottom:20px}
-.walk__path{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.walk__trail{fill:none;stroke:rgba(131,59,0,.18);stroke-width:3;stroke-dasharray:2 10;stroke-linecap:round}
-.walk__line{fill:none;stroke:var(--brun);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round}
-.walk__dot{fill:var(--bleu);stroke:var(--creme);stroke-width:4}
-.walk__start{position:relative;z-index:1;display:grid;justify-items:center;gap:6px;justify-self:center;font-family:var(--f-ui);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brun)}
-.walk__start svg{width:64px;fill:var(--papier);stroke:var(--brun);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
-.stop{position:relative;z-index:1;display:grid;gap:16px;width:min(100%,560px)}
-.stop--right{justify-self:end}
-.stop__photo{position:relative;width:72%;transform:rotate(-3deg);transition:transform .8s var(--spring)}
-.stop--right .stop__photo{justify-self:end;transform:rotate(3deg)}
-.js .stop:not(.in) .stop__photo{transform:scale(.8) rotate(-12deg);opacity:0}
-.stop__photo{transition:transform .9s var(--spring),opacity .6s}
-.stop__photo img{border:8px solid var(--blanc);border-bottom-width:28px;border-radius:4px;box-shadow:0 18px 30px -20px rgba(27,18,16,.6);aspect-ratio:4/5;object-fit:cover;width:100%}
-.stop__photo--draw{display:grid;place-items:center;align-content:center;gap:8px;aspect-ratio:4/5;background:var(--blanc);border-radius:4px;box-shadow:0 18px 30px -20px rgba(27,18,16,.6);color:var(--brun)}
-.stop__photo--draw svg{width:60%;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
-.stop__photo--draw span{font-family:var(--f-ui);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
-.stop__text{display:grid;gap:10px;padding:18px 20px;border-radius:var(--r);background:var(--papier)}
-.stop__num{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--bleu);color:#fff;font-family:var(--f-display);font-weight:800;font-style:italic;font-size:1.2rem}
-.groups{display:grid;gap:22px;margin-top:clamp(70px,14vw,120px)!important;padding:clamp(26px,6vw,48px);border-radius:24px;background:var(--brun);color:var(--creme);transform:rotate(-1deg)}
-.groups .kicker{color:#F1E2C4}
-.groups .h3{margin:10px 0 12px;color:var(--creme)}
-.groups__cta{display:flex;flex-wrap:wrap;gap:10px;align-content:end}
+.lieu{background:var(--sable)}
+.lieu__grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 10px;margin-top:28px!important;text-align:left}
+.lieu__big{grid-column:1/-1}
+.lieu__grid .ph{aspect-ratio:3/4}
+.lieu__big .ph{aspect-ratio:4/4.4}
+.lieu__big .ph img{object-position:50% 75%}
+.lieu__grid figcaption{margin-top:10px;font-size:.93rem;line-height:1.35}
+.lieu__grid figcaption em{display:block;font-size:1.3rem;line-height:1.1;margin-bottom:2px}
+.lieu__grid figcaption span{display:block;color:#5c4a40}
+.ph--draw{display:grid;place-items:center;align-content:center;gap:6px;background:var(--creme)}
+.ph--draw svg{width:70px;fill:none;stroke:var(--brun);stroke-width:2.4;stroke-linecap:round}
+.ph--draw small{font-family:var(--f-ui);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brun)}
+.groups{max-width:620px!important;margin-top:34px!important;padding:26px 22px;border-radius:16px;background:var(--brun);color:var(--creme)}
+.groups .k{color:var(--ocre-cl)}
+.groups .hand{font-size:1.9rem;color:var(--ocre-cl);margin:8px 0}
+.groups p{font-size:1rem;opacity:.95;max-width:36ch;margin:0 auto}
+.groups .btn{margin-top:16px}
 @media (min-width:900px){
-  .stop{grid-template-columns:1fr 1fr;align-items:center;gap:40px;width:min(100%,900px)}
-  .stop__photo{width:82%;justify-self:center}
-  .stop--right .stop__photo{order:2}
-  .groups{grid-template-columns:1.4fr 1fr;align-items:end}
-  .groups__cta{justify-content:flex-end}
+  .lieu__grid{grid-template-columns:1.4fr 1fr 1fr;align-items:end;gap:20px}
+  .lieu__big{grid-column:auto}
+  .lieu__big .ph{aspect-ratio:3/4}
 }
-@media (prefers-reduced-motion:reduce){.js .stop:not(.in) .stop__photo{transform:none;opacity:1}}

@@ -1,23 +1,11 @@
-<section class="avis" id="avis" aria-labelledby="avis-title">
-  <header class="sec-head">
-    <p class="kicker" data-reveal>05 · Ce qu'on en dit</p>
-    <h2 class="h2" id="avis-title" data-wobble>L'addition, côté clients.</h2>
-  </header>
-  <div class="printer" data-printer>
-    <div class="printer__slot" aria-hidden="true"></div>
-    <div class="printer__out">
-      <div class="receipt">
-        <span class="logo-mask receipt__logo" role="img" aria-label="Giragi"></span>
-        <p class="receipt__center">{{ infos.adresse.rue }}<br>{{ infos.adresse.cp }} {{ infos.adresse.ville }}</p>
-        <p class="receipt__sep" aria-hidden="true"></p>
-        <p class="receipt__center"><b>Avis clients</b></p>
-        {{@ receipt}}
-        <p class="receipt__sep" aria-hidden="true"></p>
-        <p class="receipt__small">Extraits d'avis Google publics, reproduits sans modification, non vérifiés par Giragi.</p>
-        <p class="receipt__barcode" aria-hidden="true"></p>
-        <p class="receipt__center"><b>Merci, à bientôt !</b></p>
-      </div>
-    </div>
-  </div>
-  <a class="link avis__all" href="{{ infos.google.url }}" target="_blank" rel="noopener">Lire tous les avis sur Google</a>
+<section class="avis c" id="avis" aria-labelledby="avis-title">
+  <span class="k" data-reveal>Ce qu'on en dit</span>
+  <h2 class="sr-only" id="avis-title">Avis Google</h2>
+  <p class="score" data-reveal>{{ infos.google.note }}<small> / 5</small></p>
+  <p class="score__sub" data-reveal><span aria-hidden="true">★★★★★</span><br>{{ infos.google.avis }} avis Google au {{ infos.google.date }}</p>
+  <div class="orn" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="quotes">{{@ avisUne}}</div>
+  <div class="orn" aria-hidden="true"><i></i><i></i><i></i></div>
+  <p class="avis__note">Extraits d'avis Google publics, non vérifiés par Giragi.</p>
+  <a class="avis__all" href="{{ infos.google.url }}" target="_blank" rel="noopener">Lire tous les avis sur Google →</a>
 </section>

@@ -19,95 +19,57 @@ export function logoPaint() {
   <g mask="url(#${id})" fill="currentColor" fill-rule="evenodd">${fill}</g></svg>`;
 }
 
-/* ---------- Éphéméride (hero) ---------- */
-export function ephemeride({ infos }) {
-  const pages = infos.horaires.jours.map(j => {
-    const midi = midiOf(j), soir = soirOf(j);
-    let body;
-    if (j.code === 'Su') {
-      body = `<p class="ephem__closed">Fermé. Mais c'est notre nom :</p><p class="ephem__note"><em>Giragi</em> veut dire « dimanche » en arménien.</p>`;
-    } else if (!j.creneaux.length) {
-      body = `<p class="ephem__closed">Fermé.</p><p class="ephem__note">On se retrouve mardi midi.</p>`;
-    } else {
-      body = `<dl class="ephem__services">
-        <div${midi ? '' : ' class="off"'}><dt>Midi</dt><dd>${midi ? creneau(midi) : 'pas de service'}</dd></div>
-        <div${soir ? '' : ' class="off"'}><dt>Soir</dt><dd>${soir ? creneau(soir) : 'pas de service'}</dd></div>
-      </dl>`;
-    }
-    return `<li class="ephem__page${j.code === 'Su' ? ' ephem__page--sunday' : ''}" data-day="${j.code}">
-      <p class="ephem__label"><span data-label>${esc(j.jour)}</span><b class="ephem__num" data-num></b></p>
-      <p class="ephem__day">${esc(j.jour)}</p>
-      ${body}
-    </li>`;
-  });
-  // Ordre par défaut (sans JS) : du mardi au lundi
-  const order = ['Tu', 'We', 'Th', 'Fr', 'Sa', 'Su', 'Mo'];
-  const byCode = Object.fromEntries(infos.horaires.jours.map((j, i) => [j.code, pages[i]]));
-  return order.map(c => byCode[c]).join('');
+/* ---------- Résumé des horaires (haut de page) ---------- */
+const ABR = { Mo: 'lun', Tu: 'mar', We: 'mer', Th: 'jeu', Fr: 'ven', Sa: 'sam', Su: 'dim' };
+function plage(jours, pick) {
+  const on = jours.filter(j => pick(j));
+  if (!on.length) return null;
+  const c = pick(on[0]);
+  return { jours: on.length > 1 ? `${ABR[on[0].code]} → ${ABR[on[on.length - 1].code]}` : ABR[on[0].code], h: creneau(c).replace('–', ' – ') };
+}
+export function heroHours({ infos }) {
+  const m = plage(infos.horaires.jours, midiOf), s = plage(infos.horaires.jours, soirOf);
+  const cell = (t, x) => x ? `<div><span class="k">${t} · ${x.jours}</span><b>${x.h}</b></div>` : '';
+  return cell('Le midi', m) + cell('Le soir', s);
 }
 
-/* ---------- Horaires (tableau) ---------- */
-export function horaires({ infos }) {
-  const rows = infos.horaires.jours.map(j => {
-    const ferme = !j.creneaux.length, midi = midiOf(j), soir = soirOf(j);
-    return `<tr${ferme ? ' class="is-closed"' : ''} data-day="${j.code}">
-      <th scope="row">${j.jour}</th>
-      ${ferme ? '<td colspan="2">Fermé</td>' : `<td>${midi ? creneau(midi) : '<span aria-label="pas de service">—</span>'}</td><td>${soir ? creneau(soir) : '<span aria-label="pas de service">—</span>'}</td>`}
-    </tr>`;
-  }).join('');
-  return `<table class="hours"><thead><tr><td></td><th scope="col">Midi</th><th scope="col">Soir</th></tr></thead><tbody>${rows}</tbody></table>`;
+/* ---------- Horaires (tableau de la semaine) ---------- */
+export function semaine({ infos }) {
+  return `<table class="week"><caption class="sr-only">Horaires d'ouverture</caption><tbody>${infos.horaires.jours.map(j => {
+    const t = j.creneaux.length ? j.creneaux.map(creneau).join(' · ') : 'Fermé';
+    return `<tr${j.creneaux.length ? '' : ' class="off"'} data-day="${j.code}"><th scope="row">${j.jour}</th><td>${t}</td></tr>`;
+  }).join('')}</tbody></table>`;
 }
+// Données horaires pour la carte « Aujourd'hui » (lue par le JS)
+export const horairesJson = ({ infos }) => `<script type="application/json" id="hours-data">${JSON.stringify(infos.horaires.jours.map(j => ({ c: j.code, j: j.jour, s: j.creneaux })))}</script>`;
 
-/* ---------- Ardoise : bons de cuisine sur le rail ---------- */
-const ticket = (p, n, service) => `<li class="ticket" style="--n:${n}">
-  <div class="ticket__paper">
-    <p class="ticket__top"><span>${service}</span><span>N° ${String(n).padStart(2, '0')}</span></p>
-    <p class="ticket__name">${esc(p.nom)}</p>
-    ${p.detail ? `<p class="ticket__detail">${esc(p.detail)}</p>` : ''}
-    <p class="ticket__foot">${p.vg ? '<abbr class="ticket__vg" title="Végétarien">VG</abbr>' : '<span></span>'}${p.prix ? `<b>${esc(p.prix)}</b>` : ''}</p>
-  </div>
-</li>`;
-
-export function railMidi({ carte }) {
-  const m = carte.midi;
-  const formules = m.formules.map(f => `<li><span>${esc(f.nom)}${f.detail ? `<small>${esc(f.detail)}</small>` : ''}</span><b>${esc(f.prix)}</b></li>`).join('');
-  const head = `<li class="ticket ticket--big" style="--n:0"><div class="ticket__paper">
-    <p class="ticket__top"><span>Midi</span><span>${esc(m.jours)}</span></p>
-    <p class="ticket__name">La formule</p>
-    <ul class="ticket__formulas">${formules}</ul>
-    <p class="ticket__detail">${esc(m.intro)}</p>
-  </div></li>`;
-  return head + m.plats.map((p, i) => ticket(p, i + 1, 'Midi')).join('');
+/* ---------- L'ardoise ---------- */
+const plat = p => `<li class="dish"><p>${esc(p.nom)}${p.vg ? ' <abbr class="vg" title="Végétarien">VG</abbr>' : ''}${p.prix ? ` <b>${esc(p.prix)}</b>` : ''}</p>${p.detail ? `<small>${esc(p.detail)}</small>` : ''}</li>`;
+export function ardoise({ carte }) {
+  const m = carte.midi, s = carte.soir;
+  const formules = m.formules.map(f => `<li class="line"><span>${esc(f.nom)}${f.detail ? ` <small>${esc(f.detail)}</small>` : ''}</span><i aria-hidden="true"></i><b>${esc(f.prix)}</b></li>`).join('');
+  return `<div class="menu__block">
+      <h3>Le midi</h3><p class="menu__days">${esc(m.jours)}</p>
+      <ul class="lines">${formules}</ul>
+      <p class="menu__ex">${esc(m.exemple)}</p>
+      <ul class="dishes">${m.plats.map(plat).join('')}</ul>
+    </div>
+    <div class="menu__orn" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="menu__block">
+      <h3>Le soir</h3><p class="menu__days">${esc(s.jours)}</p>
+      <p class="menu__ex">${esc(s.exemple)}</p>
+      <ul class="dishes">${s.plats.map(plat).join('')}</ul>
+      <p class="menu__sig">Tous les soirs : ${esc(s.signature.nom.toLowerCase())} maison</p>
+    </div>`;
 }
-
-export function railSoir({ carte }) {
-  const s = carte.soir;
-  const head = `<li class="ticket ticket--big" style="--n:0"><div class="ticket__paper">
-    <p class="ticket__top"><span>Soir</span><span>${esc(s.jours)}</span></p>
-    <p class="ticket__name">${esc(s.signature.nom)}</p>
-    <p class="ticket__detail">${esc(s.signature.detail)}.</p>
-    <p class="ticket__detail">${esc(s.intro)}</p>
-    <p class="ticket__stamp">Tous les soirs</p>
-  </div></li>`;
-  return head + s.plats.map((p, i) => ticket(p, i + 1, p.dessert ? 'Dessert' : 'Soir')).join('');
-}
-
-export const exempleMidi = ({ carte }) => esc(carte.midi.exemple);
-export const exempleSoir = ({ carte }) => esc(carte.soir.exemple);
 export const majCarte = ({ carte }) => new Date(carte.miseAJour).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 
-/* ---------- Avis : ticket de caisse ---------- */
-export function receipt({ avis, infos }) {
-  const lines = avis.avis.map((a, i) => `<li class="receipt__item">
-    <p class="receipt__row"><span>${String(i + 1).padStart(2, '0')} x ${esc(a.auteur)}</span><span aria-label="5 étoiles sur 5">★★★★★</span></p>
-    <blockquote><p>${esc(a.texte)}</p></blockquote>
-    <p class="receipt__date">${esc(a.date)}</p>
-  </li>`).join('');
-  return `<ul class="receipt__items">${lines}</ul>
-  <p class="receipt__sep" aria-hidden="true"></p>
-  <p class="receipt__total"><span>Total</span><b>${esc(infos.google.note)} / 5</b></p>
-  <p class="receipt__row"><span>Avis Google</span><span>${esc(infos.google.avis)}</span></p>
-  <p class="receipt__row"><span>Relevé le</span><span>${esc(infos.google.date)}</span></p>`;
+/* ---------- Avis à la une ---------- */
+export function avisUne({ avis }) {
+  return avis.avis.filter(a => a.une).slice(0, 3).map(a => `<figure class="quote" data-reveal>
+    <blockquote><p>« ${esc(a.texte)} »</p></blockquote>
+    <figcaption>${esc(a.auteur)} · ${esc(a.date)}</figcaption>
+  </figure>`).join('<div class="orn" aria-hidden="true"><i></i><i></i><i></i></div>');
 }
 
 /* ---------- Données structurées ---------- */

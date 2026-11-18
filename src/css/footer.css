@@ -1,8 +1,16 @@
-.foot{position:relative;padding:clamp(72px,14vw,120px) var(--pad) calc(110px + env(safe-area-inset-bottom));display:grid;gap:26px;color:var(--creme);background:var(--brun)}
-.foot>*{width:100%;max-width:var(--max);margin-inline:auto}
-.foot__say{font-style:italic;font-size:clamp(1.3rem,5.4vw,2rem);line-height:1.25;text-wrap:balance}
-.foot__cols{display:grid;gap:14px;padding-top:24px;border-top:1px solid rgba(222,217,195,.3);font-size:1.05rem}
-.foot__cols a{display:inline-flex;align-items:center;min-height:44px}
-.foot__legal{font-family:var(--f-ui);font-size:.82rem;line-height:1.9}
-.foot__legal a{display:inline-block;padding:10px 2px}
-@media (min-width:900px){.foot__cols{grid-template-columns:repeat(3,1fr)}.foot{padding-bottom:48px}}
+/* Fin de page (variante C validée) */
+.foot{padding:64px var(--pad) calc(100px + env(safe-area-inset-bottom));background:var(--brun);color:var(--creme)}
+.foot>*{max-width:var(--max);margin-inline:auto}
+.foot .k{display:inline-flex;align-items:center;min-height:44px;color:var(--ocre-cl);text-decoration:none}
+.foot .hand{font-size:clamp(2.6rem,12vw,4.6rem);color:var(--ocre-cl);margin-top:4px}
+.foot__s{margin-top:8px!important;font-style:italic;font-size:1.1rem;opacity:.9;max-width:30ch}
+.foot__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:30px!important;max-width:720px!important}
+.foot__grid a{display:block;border-radius:10px;overflow:hidden}
+.foot__grid img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .8s var(--ease)}
+.foot__grid a:hover img{transform:scale(1.04)}
+.foot__logo{width:min(60vw,260px);margin-top:40px!important;color:var(--creme)}
+.foot__say{margin-top:12px!important;font-style:italic;opacity:.9}
+.foot__leg{margin-top:18px!important;font-family:var(--f-ui);font-size:.75rem;line-height:1.9;opacity:.85}
+.foot__leg a{display:inline-block;padding:12px 2px}
+.foot .evin{opacity:.75}
+@media (min-width:900px){.foot__grid{grid-template-columns:repeat(4,1fr);max-width:var(--max)!important}.foot{padding-bottom:48px}}

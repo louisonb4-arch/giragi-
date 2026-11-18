@@ -1,36 +1,33 @@
 /* Polices auto-hébergées (aucun appel externe) */
 @font-face{font-family:"Sour Gummy";src:url(/fonts/sour-gummy-latin-800-italic.woff2) format("woff2");font-weight:800;font-style:italic;font-display:swap}
-@font-face{font-family:"Sour Gummy";src:url(/fonts/sour-gummy-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"EB Garamond";src:url(/fonts/eb-garamond-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
 @font-face{font-family:"EB Garamond";src:url(/fonts/eb-garamond-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
 @font-face{font-family:"EB Garamond";src:url(/fonts/eb-garamond-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
-@font-face{font-family:"EB Garamond";src:url(/fonts/eb-garamond-latin-500-italic.woff2) format("woff2");font-weight:500;font-style:italic;font-display:swap}
 @font-face{font-family:"Instrument Sans";src:url(/fonts/instrument-sans-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
 @font-face{font-family:"Instrument Sans";src:url(/fonts/instrument-sans-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
 @font-face{font-family:"IBM Plex Mono";src:url(/fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url(/fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
 
 :root{
-  /* Palette relevée sur le logo, la façade et les tabliers */
-  --creme:#DED9C3;      /* fond du logo, mur de la façade */
-  --papier:#ECE8DA;     /* cartes, tickets */
-  --blanc:#F7F4EA;      /* papier des bons et du ticket de caisse */
-  --brun:#833B00;       /* logo, aplats Instagram */
-  --brun-nuit:#5C2900;
-  --brun-peint:#966655; /* lettrage peint (grands textes, décor) */
-  --bleu:#3B229A;       /* tablier de l'équipe */
-  --bleu-d:#2B1877;
-  --encre:#1B1210;
-  --muted:#5A4A3E;
+  /* Couleurs relevées sur la devanture (photo de jour) */
+  --creme:#DFD8C8;    /* bandeau de l'enseigne */
+  --papier:#ECE7DB;   /* carte, encarts */
+  --sable:#E6D2B5;    /* ocre adouci */
+  --ocre:#D29C68;     /* mur de la façade */
+  --ocre-cl:#E9C192;  /* titres sur fond sombre */
+  --volet:#879EB5;    /* volets bleus : accents seulement */
+  --volet-f:#3E5670;  /* bleu volet assombri (texte) */
+  --lettre:#875D4F;   /* lettrage peint */
+  --lettre-f:#74493C; /* lettrage, petits textes (contraste) */
+  --brun:#47302A;     /* fonds sombres, boutons */
+  --encre:#2A1D18;
 
-  --f-display:"Sour Gummy","Arial Rounded MT Bold",system-ui,sans-serif;
+  --f-hand:"Sour Gummy","Arial Rounded MT Bold",system-ui,sans-serif;
   --f-serif:"EB Garamond",Garamond,"Times New Roman",serif;
   --f-ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 
-  --pad:clamp(20px,5.6vw,56px);
-  --max:1200px;
-  --r:16px;
+  --pad:clamp(22px,5.6vw,56px);
+  --max:1120px;
+  --r:14px;
   --ease:cubic-bezier(.22,1,.36,1);
-  --spring:cubic-bezier(.34,1.56,.64,1);
 }

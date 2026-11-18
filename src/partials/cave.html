@@ -1,46 +1,16 @@
-<section class="cave" id="cave" aria-labelledby="cave-title">
-  <div class="cave__intro">
-    <figure class="cave__photo" data-reveal><img src="/img/vin-640.webp" srcset="/img/vin-640.webp 640w, /img/vin.webp 1080w" sizes="(min-width: 900px) 30vw, 60vw" width="1080" height="1350" loading="lazy" alt="Une bouteille et un verre posés au soleil, leur ombre sur le bitume"></figure>
-    <div>
-      <p class="kicker" data-reveal>03 · La cave</p>
-      <h2 class="h2" id="cave-title" data-wobble>Des quilles bien choisies.</h2>
-      <p class="cave__lead" data-reveal>Des vins de vignerons du coin, une carte qui évolue avec les assiettes et les saisons. Choisissez une bouteille, on vous sert.</p>
-    </div>
+<section class="cave c" id="cave" aria-labelledby="cave-title">
+  <span class="k" data-reveal>La cave</span>
+  <h2 class="hand" id="cave-title" data-reveal>Des quilles bien choisies !</h2>
+  <p class="sub" data-reveal>Des vignerons du coin, une carte qui suit les assiettes et les saisons.</p>
+  <div class="cave__grid">
+    <figure class="ph" data-reveal><img src="/img/vin-640.webp" srcset="/img/vin-640.webp 640w, /img/vin.webp 1080w" sizes="(min-width: 900px) 30vw, 55vw" width="1080" height="1350" loading="lazy" alt="Une bouteille et un verre posés au soleil, leur ombre sur le bitume"></figure>
+    <figure class="ph" data-reveal style="--i:1"><img src="/img/verres-640.webp" width="640" height="853" loading="lazy" alt="Deux verres sur une table verte au soleil"></figure>
   </div>
-
-  <div class="bar" data-bar>
-    <div class="shelf" role="radiogroup" aria-label="Choisir une bouteille">
-      <button class="bottle" type="button" role="radio" aria-checked="true" data-pour="#EAD48C" data-text="Des quilles de Loire, de vignerons du coin." style="--c:#EAD48C">
-        <svg viewBox="0 0 60 200" aria-hidden="true"><path class="bottle__glass" d="M24 4h12v40c0 8 14 14 14 34v110a8 8 0 0 1-8 8H18a8 8 0 0 1-8-8V78c0-20 14-26 14-34z"/><rect class="bottle__label" x="13" y="112" width="34" height="46" rx="3"/></svg>
-        <span>Loire</span>
-      </button>
-      <button class="bottle" type="button" role="radio" aria-checked="false" data-pour="#E39A4E" data-text="Naturels pour certains, issus de vignobles bio pour d'autres." style="--c:#E39A4E">
-        <svg viewBox="0 0 60 200" aria-hidden="true"><path class="bottle__glass" d="M24 4h12v40c0 8 14 14 14 34v110a8 8 0 0 1-8 8H18a8 8 0 0 1-8-8V78c0-20 14-26 14-34z"/><rect class="bottle__label" x="13" y="112" width="34" height="46" rx="3"/></svg>
-        <span>Nature &amp; bio</span>
-      </button>
-      <button class="bottle" type="button" role="radio" aria-checked="false" data-pour="#8E1F35" data-text="Et quelques pépites venues d'ailleurs." style="--c:#8E1F35">
-        <svg viewBox="0 0 60 200" aria-hidden="true"><path class="bottle__glass" d="M24 4h12v40c0 8 14 14 14 34v110a8 8 0 0 1-8 8H18a8 8 0 0 1-8-8V78c0-20 14-26 14-34z"/><rect class="bottle__label" x="13" y="112" width="34" height="46" rx="3"/></svg>
-        <span>D'ailleurs</span>
-      </button>
-      <button class="bottle bottle--beer" type="button" role="radio" aria-checked="false" data-pour="#E8AE3E" data-foam="1" data-text="Des bières de brasseries locales." style="--c:#E8AE3E">
-        <svg viewBox="0 0 60 200" aria-hidden="true"><path class="bottle__glass" d="M25 40h10v30c0 6 12 12 12 24v90a8 8 0 0 1-8 8H21a8 8 0 0 1-8-8V94c0-12 12-18 12-24z"/><rect class="bottle__label" x="16" y="122" width="28" height="36" rx="14"/></svg>
-        <span>Bières</span>
-      </button>
-      <button class="bottle bottle--shaker" type="button" role="radio" aria-checked="false" data-pour="#D8663D" data-text="Des cocktails de saison, avec ou sans alcool." style="--c:#D8663D">
-        <svg viewBox="0 0 60 200" aria-hidden="true"><path class="bottle__glass" d="M22 52h16v10H22zM18 66h24l-2 18H20zM14 88h32l-4 104a6 6 0 0 1-6 6H24a6 6 0 0 1-6-6z"/><rect class="bottle__label" x="20" y="120" width="20" height="40" rx="3"/></svg>
-        <span>Cocktails</span>
-      </button>
-    </div>
-
-    <div class="pour">
-      <svg class="pour__glass" viewBox="0 0 120 170" aria-hidden="true">
-        <defs><clipPath id="glassIn"><path d="M24 14h72c0 40-8 70-36 74C32 84 24 54 24 14z"/></clipPath></defs>
-        <rect class="pour__stream" x="57" y="-40" width="6" height="80" rx="3"/>
-        <g clip-path="url(#glassIn)"><rect class="pour__liquid" x="0" y="0" width="120" height="100"/><rect class="pour__foam" x="0" y="0" width="120" height="10"/></g>
-        <path class="pour__outline" d="M24 14h72c0 40-8 70-36 74C32 84 24 54 24 14zM60 88v58M38 154h44"/>
-      </svg>
-      <p class="pour__text" aria-live="polite" data-pour-text>Des quilles de Loire, de vignerons du coin.</p>
-    </div>
-  </div>
+  <ul class="words" data-reveal>
+    <li><b>Loire</b>Vignerons du coin</li>
+    <li><b>Nature &amp; bio</b>Selon les quilles</li>
+    <li><b>Bières</b>Brasseries locales</li>
+  </ul>
+  <p class="cave__more" data-reveal>Et des cocktails de saison, avec ou sans alcool.</p>
   <p class="evin">L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</p>
 </section>

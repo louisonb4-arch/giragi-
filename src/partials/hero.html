@@ -1,27 +1,23 @@
 <section class="hero" id="accueil">
-  <figure class="hero__photo">
+  <div class="hero__facade">
+    <div class="shutters" aria-hidden="true"><i></i><b></b><i></i></div>
+    <div class="sign" data-paint>{{@ logoPaint}}</div>
+  </div>
+  <div class="hero__text">
+    <h1 class="hero__title"><span class="sr-only">Giragi, bistrot et cave à manger de quartier. </span><span aria-hidden="true">Bienvenue place Saint-Clair !</span></h1>
+    <p class="sub">Bistrot &amp; cave à manger de quartier, face à l'église, quartier Zola.</p>
+  </div>
+  <figure class="hero__photo" data-reveal>
     <picture>
       <source media="(max-width: 700px)" srcset="/img/hero-640.webp">
       <img src="/img/hero.webp" width="1080" height="1440" alt="L'équipe de Giragi en terrasse, sous l'enseigne peinte, place Saint-Clair" fetchpriority="high">
     </picture>
   </figure>
-  <div class="hero__head">
-    <p class="kicker hero__kicker">{{ infos.adresse.quartier }} · Nantes</p>
-    <h1 class="hero__title" data-wobble><span class="sr-only">Giragi, </span>Bistrot &amp; cave à manger de quartier</h1>
-  </div>
-
-  <div class="ephem" data-ephem>
-    <div class="ephem__rings" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <ol class="ephem__pages" aria-live="polite">{{@ ephemeride}}</ol>
-    <button class="ephem__tear" type="button" data-tear>Arracher la page <span aria-hidden="true">↑</span></button>
-  </div>
-
-  <div class="hero__more">
-    <p class="hero__lead">Une formule courte le midi, des assiettes à partager le soir, des vins de vignerons et deux terrasses face à l'église Saint-Clair.</p>
+  <div class="hero__cta">
     <div class="hero__actions">
-      <a class="btn btn--blue" href="{{ infos.reservation.url }}" target="_blank" rel="noopener">Réserver une table</a>
+      <a class="btn btn--dark" href="{{ infos.reservation.url }}" target="_blank" rel="noopener">Réserver une table</a>
       <a class="btn btn--line" href="tel:{{ infos.telephone.lien }}">Appeler</a>
     </div>
-    <a class="hero__rating" href="#avis"><b>{{ infos.google.note }}</b><span class="stars" aria-hidden="true">★★★★★</span><span>{{ infos.google.avis }} avis Google</span></a>
+    <div class="hero__hours">{{@ heroHours}}</div>
   </div>
 </section>
