@@ -11,3 +11,9 @@ initHours();
 // Le logo se peint sur l'enseigne au chargement (une seule fois)
 const sign = document.querySelector('[data-paint]');
 if (sign) (document.fonts?.ready ?? Promise.resolve()).then(() => paint(sign.querySelector('svg'), 1.5));
+
+// Une fois la page chargée, on précharge les photos restantes :
+// plus de cadres vides quand on descend vite.
+const warm = () => document.querySelectorAll('img[loading="lazy"]').forEach(img => { img.loading = 'eager'; });
+const idle = window.requestIdleCallback || (cb => setTimeout(cb, 300));
+if (document.readyState === 'complete') idle(warm); else addEventListener('load', () => idle(warm), { once: true });
